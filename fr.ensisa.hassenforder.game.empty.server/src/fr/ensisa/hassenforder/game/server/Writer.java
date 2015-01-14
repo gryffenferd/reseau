@@ -12,10 +12,15 @@ public class Writer extends BasicAbstractWriter {
 		super (outputStream);
 	}
 
-	public void ok(Long id,boolean oko){
+	public void okConnect(Long id){
 		System.out.println("ok writer");
 		writeInt(1);			//message connect avec discriminant 1
-		writeBoolean(oko);		//message true pour dire ok ou ko
+		writeBoolean(true);		//message true pour dire ok ou ko
 		writeLong(id);			//envoie l'id de l'utilisateur
+	}
+	
+	public void koConnect(){
+		writeInt(2);
+		writeBoolean(false);
 	}
 }

@@ -32,9 +32,9 @@ public class SessionServer {
 				System.out.println("I'm in the case 1 SessionServer");
 				User usercurrent = document.connect(reader.getUsername(), reader.getUserpassword());
 				if(usercurrent==null)
-					writer.ok((long)0,false);
+					writer.koConnect();
 				else
-					writer.ok(usercurrent.getId(),true);
+					writer.okConnect(usercurrent.getId());
 					
 				break;
 			case -1 :
