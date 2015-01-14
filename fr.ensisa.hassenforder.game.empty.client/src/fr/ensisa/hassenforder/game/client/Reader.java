@@ -18,13 +18,15 @@ public class Reader extends BasicAbstractReader {
 	public void receive() {
 		type = readInt ();
 		switch (type) {
-		case 0:				//Si 0, risque de valoir la valeur d'une var non initialisée
+		case 0:						//Si 0, risque de valoir la valeur d'une var non initialisée
 			break;
-		case 1: 			//connect
+		case 1: 					//connect si marche (réponse du serveur = ok)
 			readerConnect();
 			break;
-
-//		case 3:				//disconnect
+		case 2:
+			readerConnectFailed();	//connect si ne marche pas (réponse du serveur = ko)
+			break;
+//		case 3:						//disconnect
 //			readerDisconnect();
 //			break;
 		default:
@@ -37,6 +39,9 @@ public class Reader extends BasicAbstractReader {
 		userID = readLong();
 	}
 	
+	public void readerConnectFailed(){
+		connected = readBoolean();
+	}
 
 	
 //	public void readerDisconnect(){
