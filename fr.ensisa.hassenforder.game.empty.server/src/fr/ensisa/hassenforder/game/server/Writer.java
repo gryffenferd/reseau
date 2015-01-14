@@ -20,6 +20,7 @@ public class Writer extends BasicAbstractWriter {
 	}
 	
 	public void koConnect(){
+		System.out.println("ko writer");
 		writeInt(2);
 		writeBoolean(false);
 	}
