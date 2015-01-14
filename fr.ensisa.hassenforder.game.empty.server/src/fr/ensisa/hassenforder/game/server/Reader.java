@@ -29,6 +29,7 @@ public class Reader extends BasicAbstractReader {
 	}
 	
 	public void connect(){	
+		System.out.println("connect Reader");
 		username = readString();
 		userpassword = readString();
 	}

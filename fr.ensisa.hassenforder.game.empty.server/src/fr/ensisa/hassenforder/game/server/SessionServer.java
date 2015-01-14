@@ -29,12 +29,12 @@ public class SessionServer {
 			switch (reader.getType ()) {
 			case 0 : return false; // socket closed
 			case 1 :
+				System.out.println("I'm in the case 1 SessionServer");
 				User usercurrent = document.connect(reader.getUsername(), reader.getUserpassword());
 				if(usercurrent==null)
 					writer.ko();
 				else
-					writer.ok(usercurrent.getId());
-				
+					writer.ok(usercurrent.getId());				
 				break;
 			case -1 :
 				break;
