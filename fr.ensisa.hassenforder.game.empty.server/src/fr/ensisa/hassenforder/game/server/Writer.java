@@ -15,7 +15,7 @@ public class Writer extends BasicAbstractWriter {
 	public void ok(Long id,boolean oko){
 		System.out.println("ok writer");
 		writeInt(1);			//message connect avec discriminant 1
-		writeBoolean(oko);		//message true pour dire ok
+		writeBoolean(oko);		//message true pour dire ok ou ko
 		writeLong(id);			//envoie l'id de l'utilisateur
 	}
 }
