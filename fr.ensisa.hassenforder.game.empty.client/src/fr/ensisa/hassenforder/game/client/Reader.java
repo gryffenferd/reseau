@@ -37,10 +37,12 @@ public class Reader extends BasicAbstractReader {
 	public void readerConnect(){
 		connected = readBoolean();
 		userID = readLong();
+		//System.out.println("OK");
 	}
 	
 	public void readerConnectFailed(){
 		connected = readBoolean();
+		//System.out.println("KO");
 	}
 
 	
