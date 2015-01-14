@@ -34,7 +34,8 @@ public class SessionServer {
 				if(usercurrent==null)
 					writer.ok((long)0,false);
 				else
-					writer.ok(usercurrent.getId(),true);				
+					writer.ok(usercurrent.getId(),true);
+					
 				break;
 			case -1 :
 				break;
