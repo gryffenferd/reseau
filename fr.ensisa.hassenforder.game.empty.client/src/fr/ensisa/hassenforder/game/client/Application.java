@@ -94,7 +94,7 @@ public class Application {
 		}
     }
 
-    public boolean doDisconnect() {
+    public boolean doDisconnect() throws IOException {
     	passThrough ("doDisconnect");
 		if (socket == null) return false;
 		if (network == null) return false;

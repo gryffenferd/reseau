@@ -21,22 +21,26 @@ public class SessionClient {
 		this.id = 0;
 	}
 
-	public boolean connect (String username, String userpassword) {
-		try {
-			if (true) throw new IOException ("not yet implemented");
-			return true;
-		} catch (IOException e) {
-			return false;
-		}
+	public boolean connect (String username, String userpassword) throws IOException {
+		
+			Writer writerClient = new Writer(connection.getOutputStream());
+			writerClient.writerConnect(username, userpassword);
+			writerClient.send();
+			Reader readerClient = new Reader(connection.getInputStream());
+			readerClient.receive();
+			System.out.println(readerClient.getConnectedState());
+			return readerClient.getConnectedState();
 	}
 
-	public boolean disconnect () {
+	public boolean disconnect () throws IOException {
 		try {
 			if (true) throw new IOException ("not yet implemented");
 			return true;
 		} catch (IOException e) {
 			return false;
 		}
+		//Writer writerClient = new Writer(connection.getOutputStream());
+		//
 	}
 
 	public boolean addCash (int amount) {

@@ -6,6 +6,7 @@
 
 package fr.ensisa.hassenforder.game.client;
 
+import java.io.IOException;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -152,7 +153,12 @@ public class GUI extends javax.swing.JFrame {
         jDisconnect.setText("disconnect");
         jDisconnect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jDisconnectMouseClicked(evt);
+                try {
+					jDisconnectMouseClicked(evt);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
@@ -723,7 +729,7 @@ public class GUI extends javax.swing.JFrame {
     	}
     }//GEN-LAST:event_jConnectMouseClicked
 
-    private void jDisconnectMouseClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jDisconnectMouseClicked
+    private void jDisconnectMouseClicked(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_jDisconnectMouseClicked
     	boolean r = app.doDisconnect();
     	if (r) {
     		jStatus.setText("You are now disconnected");

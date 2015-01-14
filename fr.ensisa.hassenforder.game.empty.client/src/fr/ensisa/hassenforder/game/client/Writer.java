@@ -11,4 +11,15 @@ public class Writer extends BasicAbstractWriter {
 		super (outputStream);
 	}
 
+	public void writerConnect (String username, String userpassword){
+		writeInt(1);
+		writeString(username);
+		writeString(userpassword);
+	}
+	
+//	public void writerDisconnect (){
+//		writeInt(2);
+//		
+//	}
+
 }
