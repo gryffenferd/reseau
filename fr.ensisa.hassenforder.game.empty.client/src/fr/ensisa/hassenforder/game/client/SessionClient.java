@@ -28,7 +28,8 @@ public class SessionClient {
 			writerClient.send();
 			Reader readerClient = new Reader(connection.getInputStream());
 			readerClient.receive();
-			System.out.println(readerClient.getConnectedState());
+			if(readerClient.getConnectedState())
+				System.out.println("On SAIT pour NetBeans!!!!");
 			return readerClient.getConnectedState();
 	}
 
