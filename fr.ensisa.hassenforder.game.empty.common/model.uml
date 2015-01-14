@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<uml:Model xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uml="http://www.eclipse.org/uml2/5.0.0/UML" name="root model">
+  <packagedElement xsi:type="uml:Model" name="model">
+    <packagedElement xsi:type="uml:Package" name="model" visibility="public">
+      <packagedElement xsi:type="uml:Artifact" name="Category.java" visibility="public" fileName="H:\Software\luna\Reseaux\fr.ensisa.hassenforder.game.common\src\fr\ensisa\hassenforder\game\model\Category.java"/>
+      <packagedElement xsi:type="uml:Artifact" name="Player.java" visibility="public" fileName="H:\Software\luna\Reseaux\fr.ensisa.hassenforder.game.common\src\fr\ensisa\hassenforder\game\model\Player.java"/>
+      <packagedElement xsi:type="uml:Artifact" name="Product.java" visibility="public" fileName="H:\Software\luna\Reseaux\fr.ensisa.hassenforder.game.common\src\fr\ensisa\hassenforder\game\model\Product.java"/>
+      <packagedElement xsi:type="uml:Artifact" name="Shop.java" visibility="public" fileName="H:\Software\luna\Reseaux\fr.ensisa.hassenforder.game.common\src\fr\ensisa\hassenforder\game\model\Shop.java"/>
+    </packagedElement>
+  </packagedElement>
+</uml:Model>
