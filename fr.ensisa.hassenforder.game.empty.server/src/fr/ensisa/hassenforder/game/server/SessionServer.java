@@ -46,6 +46,7 @@ public class SessionServer {
 				}
 				else{
 					if(document.disconnect(reader.getUserName(),reader.getUserId())){
+						System.out.println(reader.getUserName() + " : " + reader.getUserId());
 						System.out.println("Disconnect success");
 						writer.okDisconnect();
 					}
@@ -54,6 +55,7 @@ public class SessionServer {
 						writer.koDisconnect();
 					}
 				}
+				break;
 			case -1 :
 				break;
 			default: return false; // connection jammed
