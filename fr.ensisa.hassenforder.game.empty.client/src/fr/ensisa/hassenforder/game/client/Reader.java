@@ -10,7 +10,6 @@ public class Reader extends BasicAbstractReader {
 	
 	private boolean connected;
 	private long userID;
-	private String name;
 
 	public Reader(InputStream inputStream) {
 		super (inputStream);
@@ -63,8 +62,5 @@ public class Reader extends BasicAbstractReader {
 		return this.userID;
 	}
 	
-	public String getName(){
-		return this.name = name;
-	}
 	
 }
