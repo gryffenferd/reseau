@@ -14,6 +14,7 @@ public class SessionServer {
 
 	private Socket connection;
 	private Document document;
+	private long userId;
 	
 	public SessionServer (Document document, Socket connection) {
 		this.document = document;
@@ -29,13 +30,23 @@ public class SessionServer {
 			switch (reader.getType ()) {
 			case 0 : return false; // socket closed
 			case 1 :
-				System.out.println("I'm in the case 1 SessionServer");
-				User usercurrent = document.connect(reader.getUsername(), reader.getUserpassword());
+				System.out.println("I'm in the case connect SessionServer");
+				User usercurrent = document.connect(reader.getUserName(), reader.getUserPassword());
 				if(usercurrent==null)
 					writer.koConnect();
 				else
 					writer.okConnect(usercurrent.getId());
+					this.userId=usercurrent.getId();
 				break;
+			case 3:
+				System.out.println("I'm in the case disconnect SessionServer");
+				if(this.userId!=reader.getUserId())
+					System.out.println("Identification fausse");
+				else 
+					if(document.disconnect(reader.getUserName(),reader.getUserId()))
+						System.out.println("Disconnect");
+					else
+						System.out.println("Disconnect failed");		
 			case -1 :
 				break;
 			default: return false; // connection jammed

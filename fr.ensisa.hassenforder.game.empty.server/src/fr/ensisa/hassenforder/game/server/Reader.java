@@ -8,8 +8,9 @@ import fr.ensisa.hassenforder.network.Protocol;
 
 public class Reader extends BasicAbstractReader {
 
-	private String username;
-	private String userpassword;
+	private String userName;
+	private String userPassword;
+	private Long userId;
 	
 	public Reader(InputStream inputStream) {
 		super (inputStream);
@@ -23,6 +24,8 @@ public class Reader extends BasicAbstractReader {
 		case 1:
 			connect();
 			break;
+		case 3:
+			disconnect();
 		default:
 			break;
 		}
@@ -30,21 +33,26 @@ public class Reader extends BasicAbstractReader {
 	
 	public void connect(){	
 		System.out.println("connect Reader");
-		username = readString();
-		userpassword = readString();
+		userName = readString();
+		userPassword = readString();
 	}
 	
 	public void disconnect(){
-		System.out.println("connect Reader");
-		
+		System.out.println("disconnect Reader");
+		userName = readString();
+		userId = readLong();
 	}
 	
-	public String getUsername(){
-		return this.username;
+	public String getUserName(){
+		return this.userName;
 	}
 	
-	public String getUserpassword(){
-		return this.userpassword;
+	public String getUserPassword(){
+		return this.userPassword;
+	}
+	
+	public Long getUserId(){
+		return this.userId;
 	}
 	
 }
