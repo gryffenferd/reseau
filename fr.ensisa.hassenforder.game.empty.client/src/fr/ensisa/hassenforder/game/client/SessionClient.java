@@ -50,7 +50,7 @@ public class SessionClient {
 		
 		
 		//
-		return false;
+		return readerClient.getConnectedState();
 		
 	}
 
