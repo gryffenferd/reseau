@@ -1,5 +1,5 @@
 Type Writer :
-1.message okConnect -> boolean
-2.message koConnect -> boolean
-3.message okDisconnect -> boolean
-4.message koDisconnect -> boolean
+1.okConnect -> boolean
+2.koConnect -> boolean
+3.okDisconnect -> boolean
+4.koDisconnect -> boolean

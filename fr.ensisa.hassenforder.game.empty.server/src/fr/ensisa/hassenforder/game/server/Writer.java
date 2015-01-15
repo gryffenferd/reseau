@@ -20,12 +20,20 @@ public class Writer extends BasicAbstractWriter {
 	}
 	
 	public void koConnect(){
-		System.out.println("ko writer disconnect");
+		System.out.println("ko writer connect");
 		writeInt(2);
 		writeBoolean(false);
 	}
 	
 	public void okDisconnect(){
-		System.out.println("ok");
+		System.out.println("ok writer disconnect");
+		writeInt(3);
+		writeBoolean(true);
+	}
+	
+	public void koDisconnect(){
+		System.out.println("ok writer disconnect");
+		writeInt(4);
+		writeBoolean(false);
 	}
 }
