@@ -4,3 +4,4 @@ Writer:
 
 3.disconnect -> String username, long id
 
+5.getStatistics
