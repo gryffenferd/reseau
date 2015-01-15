@@ -25,7 +25,6 @@ public class Reader extends BasicAbstractReader {
 			connect();
 			break;
 		case 3:
-			System.out.println("3");
 			disconnect();
 		default:
 			break;
@@ -33,13 +32,11 @@ public class Reader extends BasicAbstractReader {
 	}
 	
 	public void connect(){	
-		System.out.println("connect Reader");
 		userName = readString();
 		userPassword = readString();
 	}
 	
 	public void disconnect(){
-		System.out.println("disconnect Reader");
 		userName = readString();
 		userId = readLong();
 	}

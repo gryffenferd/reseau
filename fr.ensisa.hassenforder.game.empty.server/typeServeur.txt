@@ -3,3 +3,4 @@ Type Writer :
 2.koConnect -> boolean false
 3.okDisconnect -> boolean true
 4.koDisconnect -> boolean false
+5.statistics -> 
