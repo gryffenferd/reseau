@@ -1,5 +1,5 @@
 Type Writer :
-1.okConnect -> boolean
-2.koConnect -> boolean
-3.okDisconnect -> boolean
-4.koDisconnect -> boolean
+1.okConnect -> boolean true
+2.koConnect -> boolean false
+3.okDisconnect -> boolean true
+4.koDisconnect -> boolean false
