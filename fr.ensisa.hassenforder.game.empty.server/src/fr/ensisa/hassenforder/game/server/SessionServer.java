@@ -40,13 +40,20 @@ public class SessionServer {
 				break;
 			case 3:
 				System.out.println("I'm in the case disconnect SessionServer");
-				if(this.userId!=reader.getUserId())
+				if(this.userId!=reader.getUserId()){
 					System.out.println("Identification fausse");
-				else 
-					if(document.disconnect(reader.getUserName(),reader.getUserId()))
-						System.out.println("Disconnect");
-					else
-						System.out.println("Disconnect failed");		
+					writer.koDisconnect();
+				}
+				else{
+					if(document.disconnect(reader.getUserName(),reader.getUserId())){
+						System.out.println("Disconnect success");
+						writer.okDisconnect();
+					}
+					else{
+						System.out.println("Disconnect failed");	
+						writer.koDisconnect();
+					}
+				}
 			case -1 :
 				break;
 			default: return false; // connection jammed
