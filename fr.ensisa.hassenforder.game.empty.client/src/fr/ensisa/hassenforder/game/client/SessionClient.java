@@ -44,7 +44,9 @@ public class SessionClient {
 //		}
 		Writer writerClient = new Writer(connection.getOutputStream());
 		writerClient.setUserID(id);
-		
+		writerClient.writerDisconnect();
+		Reader readerClient = new Reader(connection.getInputStream());
+		readerClient.receive();
 		
 		
 		//

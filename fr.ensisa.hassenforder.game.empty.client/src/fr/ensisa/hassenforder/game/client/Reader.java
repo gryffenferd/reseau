@@ -10,7 +10,6 @@ public class Reader extends BasicAbstractReader {
 	
 	private boolean connected;
 	private long userID;
-	private boolean disconnected;
 
 	public Reader(InputStream inputStream) {
 		super (inputStream);
@@ -51,7 +50,7 @@ public class Reader extends BasicAbstractReader {
 
 	
 	public void readerDisconnect(){
-		disconnected = readBoolean();
+		connected = !readBoolean();
 		//
 	}
 	
