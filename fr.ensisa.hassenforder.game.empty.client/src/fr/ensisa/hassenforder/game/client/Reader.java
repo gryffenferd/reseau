@@ -10,6 +10,7 @@ public class Reader extends BasicAbstractReader {
 	
 	private boolean connected;
 	private long userID;
+	private boolean disconnected;
 
 	public Reader(InputStream inputStream) {
 		super (inputStream);
@@ -26,8 +27,11 @@ public class Reader extends BasicAbstractReader {
 		case 2:
 			readerConnectFailed();	//connect si ne marche pas (réponse du serveur = ko)
 			break;
-		case 3:						//disconnect
+		case 3:						//disconnect ok
 			readerDisconnect();
+			break;
+		case 4:
+			readerDisconnect();		//disconnect ko
 			break;
 		default:
 			break;
@@ -47,6 +51,7 @@ public class Reader extends BasicAbstractReader {
 
 	
 	public void readerDisconnect(){
+		disconnected = readBoolean();
 		//
 	}
 	
