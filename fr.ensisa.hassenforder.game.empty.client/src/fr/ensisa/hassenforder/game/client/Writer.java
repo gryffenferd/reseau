@@ -20,14 +20,14 @@ public class Writer extends BasicAbstractWriter {
 		writeString(userpassword);
 	}
 	
-	public void writerDisconnect (){
+	public void writerDisconnect (String name, long id){
 		writeInt(3);
-		writeString(username);
-		writeLong(userID);
+		writeString(name);
+		writeLong(id);
 	}
 	
 	public void setUserID(long userID){
 		this.userID = userID;
 	}
-
+	
 }
