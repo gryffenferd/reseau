@@ -36,4 +36,11 @@ public class Writer extends BasicAbstractWriter {
 		writeInt(4);
 		writeBoolean(false);
 	}
+	
+	/* 5 */
+	public void okStatistics(int cash, String fileName, byte[] content){
+		writeInt(5);
+		writeInt(cash);
+	}
+			
 }
