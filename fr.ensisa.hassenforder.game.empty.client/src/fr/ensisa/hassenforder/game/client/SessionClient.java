@@ -33,7 +33,6 @@ public class SessionClient {
 			System.out.println(name);
 			System.out.println(id);
 			if(readerClient.getConnectedState()){
-
 				//System.out.println("On SAIT pour NetBeans!!!!");
 			}
 			return readerClient.getConnectedState();

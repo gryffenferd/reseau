@@ -50,7 +50,7 @@ public class Reader extends BasicAbstractReader {
 
 	
 	public void readerDisconnect(){
-		connected = !readBoolean();
+		connected = readBoolean();
 		//
 	}
 	
