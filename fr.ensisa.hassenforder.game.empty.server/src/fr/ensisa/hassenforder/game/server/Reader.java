@@ -25,6 +25,7 @@ public class Reader extends BasicAbstractReader {
 			connect();
 			break;
 		case 3:
+			System.out.println("3");
 			disconnect();
 		default:
 			break;

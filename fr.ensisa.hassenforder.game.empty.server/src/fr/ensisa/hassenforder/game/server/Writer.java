@@ -12,6 +12,7 @@ public class Writer extends BasicAbstractWriter {
 		super (outputStream);
 	}
 
+	/* 1 */
 	public void okConnect(Long id){
 		System.out.println("ok writer connect");
 		writeInt(1);			//message connect avec discriminant 1
@@ -19,18 +20,21 @@ public class Writer extends BasicAbstractWriter {
 		writeLong(id);			//envoie l'id de l'utilisateur
 	}
 	
+	/* 2 */
 	public void koConnect(){
 		System.out.println("ko writer connect");
 		writeInt(2);
 		writeBoolean(false);
 	}
 	
+	/* 3 */
 	public void okDisconnect(){
 		System.out.println("ok writer disconnect");
 		writeInt(3);
 		writeBoolean(true);
 	}
 	
+	/* 4 */
 	public void koDisconnect(){
 		System.out.println("ok writer disconnect");
 		writeInt(4);
