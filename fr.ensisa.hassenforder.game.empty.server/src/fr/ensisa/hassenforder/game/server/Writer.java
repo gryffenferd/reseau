@@ -32,7 +32,7 @@ public class Writer extends BasicAbstractWriter {
 	}
 	
 	/* 4 */
-	public void koDisconnect(){
+	public void ko(){
 		writeInt(4);
 		writeBoolean(false);
 	}
@@ -42,5 +42,6 @@ public class Writer extends BasicAbstractWriter {
 		writeInt(5);
 		writeInt(cash);
 	}
+		
 			
 }

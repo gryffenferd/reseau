@@ -41,13 +41,13 @@ public class SessionServer {
 				break;
 			case 3:
 				if (this.userId != reader.getUserId())
-					writer.koDisconnect();
+					writer.ko();
 				else {
 					if (document.disconnect(reader.getUserName(),
 							reader.getUserId()))
 						writer.okDisconnect();
 					else
-						writer.koDisconnect();
+						writer.ko();
 				}
 				break;
 			case 4:
