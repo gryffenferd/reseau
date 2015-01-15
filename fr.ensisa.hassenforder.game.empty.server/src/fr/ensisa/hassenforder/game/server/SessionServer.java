@@ -35,7 +35,6 @@ public class SessionServer {
 					writer.koConnect();
 				else
 					writer.okConnect(usercurrent.getId());
-					
 				break;
 			case -1 :
 				break;

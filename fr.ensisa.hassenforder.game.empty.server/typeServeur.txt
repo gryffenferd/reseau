@@ -1,0 +1,4 @@
+Type Writer :
+1.message okConnect -> boolean
+2.message koConnect -> boolean
+
