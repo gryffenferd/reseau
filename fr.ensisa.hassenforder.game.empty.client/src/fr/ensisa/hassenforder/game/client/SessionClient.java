@@ -28,20 +28,28 @@ public class SessionClient {
 			writerClient.send();
 			Reader readerClient = new Reader(connection.getInputStream());
 			readerClient.receive();
-			if(readerClient.getConnectedState())
-				System.out.println("On SAIT pour NetBeans!!!!");
+			if(readerClient.getConnectedState()){
+				this.id = readerClient.getUserID();
+				//System.out.println("On SAIT pour NetBeans!!!!");
+			}
 			return readerClient.getConnectedState();
 	}
 
 	public boolean disconnect () throws IOException {
-		try {
-			if (true) throw new IOException ("not yet implemented");
-			return true;
-		} catch (IOException e) {
-			return false;
-		}
-		//Writer writerClient = new Writer(connection.getOutputStream());
+//		try {
+//			if (true) throw new IOException ("not yet implemented");
+//			return true;
+//		} catch (IOException e) {
+//			return false;
+//		}
+		Writer writerClient = new Writer(connection.getOutputStream());
+		writerClient.setUserID(id);
+		
+		
+		
 		//
+		return false;
+		
 	}
 
 	public boolean addCash (int amount) {

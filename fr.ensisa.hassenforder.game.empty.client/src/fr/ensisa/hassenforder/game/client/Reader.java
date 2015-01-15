@@ -26,9 +26,9 @@ public class Reader extends BasicAbstractReader {
 		case 2:
 			readerConnectFailed();	//connect si ne marche pas (réponse du serveur = ko)
 			break;
-//		case 3:						//disconnect
-//			readerDisconnect();
-//			break;
+		case 3:						//disconnect
+			readerDisconnect();
+			break;
 		default:
 			break;
 		}
@@ -46,9 +46,9 @@ public class Reader extends BasicAbstractReader {
 	}
 
 	
-//	public void readerDisconnect(){
-//		//
-//	}
+	public void readerDisconnect(){
+		//
+	}
 	
 	public boolean getConnectedState(){	//can't set: you shall not pass.
 		return this.connected;
