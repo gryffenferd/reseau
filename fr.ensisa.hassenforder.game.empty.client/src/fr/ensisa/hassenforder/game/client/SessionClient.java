@@ -39,7 +39,7 @@ public class SessionClient {
 	}
 
 	public boolean disconnect () throws IOException {
-		try {
+//		try {
 			
 			Writer writerClient = new Writer(connection.getOutputStream());
 			writerClient.setUserID(id);
@@ -49,9 +49,9 @@ public class SessionClient {
 			readerClient.receive();
 			return readerClient.getConnectedState();
 		
-		} catch (IOException e) {
-		return false;
-	}
+//		} catch (IOException e) {
+//		return false;
+//	}
 	}
 
 	public boolean addCash (int amount) {
