@@ -12,6 +12,10 @@ public class Writer extends BasicAbstractWriter implements Protocol {
 	public Writer(OutputStream outputStream) {
 		super (outputStream);
 	}
+	
+	public void setUserID(long userID){
+		this.userID = userID;
+	}
 
 	public void writerConnect (String username, String userpassword){
 		writeInt(CONNECTION);
@@ -32,8 +36,6 @@ public class Writer extends BasicAbstractWriter implements Protocol {
 		writeLong(id);
 	}
 	
-	public void setUserID(long userID){
-		this.userID = userID;
-	}
+
 	
 }
