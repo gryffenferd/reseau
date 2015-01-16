@@ -14,6 +14,8 @@ public class SessionClient implements Protocol {	//Voir si le protocole est util
 	private Socket connection;
     private String name;
     private long id;
+	private String image;
+	private int cash;
 	
 	public SessionClient (Socket connection) {
 		this.connection = connection;
@@ -88,6 +90,9 @@ public class SessionClient implements Protocol {	//Voir si le protocole est util
 		writerClient.send();
 		Reader readerClient = new Reader(connection.getInputStream());
 		readerClient.receive();
+		cash = readerClient.getCash();
+		//image = 
+		Player player1 = new Player(name,image,cash);
 		return null;
 		
 	}

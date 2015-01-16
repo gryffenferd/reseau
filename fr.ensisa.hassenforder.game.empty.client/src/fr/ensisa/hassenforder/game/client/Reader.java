@@ -10,6 +10,7 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	
 	private boolean connected;
 	private long userID;
+	private int cash;
 
 	public Reader(InputStream inputStream) {
 		super (inputStream);
@@ -33,7 +34,7 @@ public class Reader extends BasicAbstractReader implements Protocol {
 			readerDisconnect();		//disconnect ko
 			break;
 		case STATISTICS_OK:			//Cas où getStatistics est ok
-			
+			readerStatistics();
 			break;
 		default:
 			break;
@@ -50,7 +51,6 @@ public class Reader extends BasicAbstractReader implements Protocol {
 		connected = readBoolean();
 		//System.out.println("KO");
 	}
-
 	
 	public void readerDisconnect(){
 		connected = readBoolean();
@@ -61,8 +61,17 @@ public class Reader extends BasicAbstractReader implements Protocol {
 		return this.connected;
 	}
 	
+	
+	public void readerStatistics(){	//Lit le cash
+		cash = readInt();
+	}
+	
 	public long getUserID(){
 		return this.userID;
+	}
+	
+	public int getCash(){
+		return this.cash;
 	}
 	
 	
