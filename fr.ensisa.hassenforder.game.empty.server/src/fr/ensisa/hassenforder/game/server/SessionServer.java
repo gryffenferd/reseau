@@ -14,7 +14,6 @@ public class SessionServer {
 
 	private Socket connection;
 	private Document document;
-	private long userId;
 
 	public SessionServer(Document document, Socket connection) {
 		this.document = document;
@@ -37,21 +36,16 @@ public class SessionServer {
 					writer.koConnect();
 				else
 					writer.okConnect(usercurrent.getId());
-				this.userId = usercurrent.getId();
-				break;
+			break;
 			case 3:
-				if (this.userId != reader.getUserId())
-					writer.ko();
-				else {
 					if (document.disconnect(reader.getUserName(),
 							reader.getUserId()))
 						writer.okDisconnect();
 					else
 						writer.ko();
-				}
-				break;
+			break;
 			case 4:
-				Account account = document.getStatistics("Paul", userId);
+				Account account = document.getStatistics(reader.getUserName(), reader.getUserId());
 				int cash = account.getCash();
 				System.out.println(cash);
 				break;
