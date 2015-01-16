@@ -6,7 +6,7 @@ import java.io.InputStream;
 import fr.ensisa.hassenforder.network.BasicAbstractReader;
 import fr.ensisa.hassenforder.network.Protocol;
 
-public class Reader extends BasicAbstractReader {
+public class Reader extends BasicAbstractReader implements Protocol {
 
 	private String userName;
 	private String userPassword;
@@ -21,7 +21,7 @@ public class Reader extends BasicAbstractReader {
 		switch (type) {
 		case 0 :
 			break;
-		case 1:
+		case CONNECTION:
 			connect();
 			break;
 		case 3:

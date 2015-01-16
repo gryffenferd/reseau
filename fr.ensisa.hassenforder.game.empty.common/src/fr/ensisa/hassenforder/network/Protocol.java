@@ -6,4 +6,7 @@ public interface Protocol {
 
 	public static final Object EXIT_TEXT = "exit";
 
+	public static final int CONNECTION = 1;
+	public static final int CONNECTION_FAILED = 2;
+	
 }

@@ -6,7 +6,7 @@ import java.util.Collection;
 import fr.ensisa.hassenforder.network.BasicAbstractWriter;
 import fr.ensisa.hassenforder.network.Protocol;
 
-public class Writer extends BasicAbstractWriter {
+public class Writer extends BasicAbstractWriter implements Protocol {
 
 	public Writer(OutputStream outputStream) {
 		super (outputStream);
@@ -14,14 +14,14 @@ public class Writer extends BasicAbstractWriter {
 
 	/* 1 */
 	public void okConnect(Long id){
-		writeInt(1);			//message connect avec discriminant 1
+		writeInt(CONNECTION);			//message connect avec discriminant 1
 		writeBoolean(true);		//message true pour dire ok ou ko
 		writeLong(id);			//envoie l'id de l'utilisateur
 	}
 	
 	/* 2 */
 	public void koConnect(){
-		writeInt(2);
+		writeInt(CONNECTION_FAILED);
 		writeBoolean(false);
 	}
 	

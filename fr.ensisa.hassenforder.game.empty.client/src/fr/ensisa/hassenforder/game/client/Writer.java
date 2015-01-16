@@ -5,7 +5,7 @@ import java.io.OutputStream;
 import fr.ensisa.hassenforder.network.BasicAbstractWriter;
 import fr.ensisa.hassenforder.network.Protocol;
 
-public class Writer extends BasicAbstractWriter {
+public class Writer extends BasicAbstractWriter implements Protocol {
 	private long userID;
 //	private String username;
 
@@ -14,7 +14,7 @@ public class Writer extends BasicAbstractWriter {
 	}
 
 	public void writerConnect (String username, String userpassword){
-		writeInt(1);
+		writeInt(CONNECTION);
 		writeString(username);
 //		this.username = username;
 		writeString(userpassword);
