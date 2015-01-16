@@ -26,10 +26,10 @@ public class Reader extends BasicAbstractReader implements Protocol {
 		case CONNECTION_FAILED:
 			readerConnectFailed();	//connect si ne marche pas (réponse du serveur = ko)
 			break;
-		case 3:						//disconnect ok
+		case DISCONNECTION:						//disconnect ok
 			readerDisconnect();
 			break;
-		case 4:
+		case DISCONNECTION_FAILED:
 			readerDisconnect();		//disconnect ko
 			break;
 		default:

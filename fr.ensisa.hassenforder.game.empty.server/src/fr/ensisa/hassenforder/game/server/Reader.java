@@ -24,7 +24,7 @@ public class Reader extends BasicAbstractReader implements Protocol {
 		case CONNECTION:
 			connect();
 			break;
-		case 3:
+		case DISCONNECTION:
 			disconnect();
 		default:
 			break;

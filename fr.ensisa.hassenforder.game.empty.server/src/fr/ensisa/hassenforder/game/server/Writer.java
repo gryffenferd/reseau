@@ -27,13 +27,13 @@ public class Writer extends BasicAbstractWriter implements Protocol {
 	
 	/* 3 */
 	public void okDisconnect(){
-		writeInt(3);
+		writeInt(DISCONNECTION);
 		writeBoolean(true);
 	}
 	
 	/* 4 */
 	public void ko(){
-		writeInt(4);
+		writeInt(DISCONNECTION_FAILED);
 		writeBoolean(false);
 	}
 	

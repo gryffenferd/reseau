@@ -21,7 +21,7 @@ public class Writer extends BasicAbstractWriter implements Protocol {
 	}
 	
 	public void writerDisconnect (String name, long id){
-		writeInt(3);
+		writeInt(DISCONNECTION);
 		writeString(name);
 		writeLong(id);
 	}
