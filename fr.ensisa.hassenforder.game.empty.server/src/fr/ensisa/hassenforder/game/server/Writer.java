@@ -38,10 +38,13 @@ public class Writer extends BasicAbstractWriter implements Protocol {
 	}
 	
 	/* 5 */
-	public void okStatistics(int cash, String fileName, byte[] content){
+	public void statistics(int cash, String image){
 		writeInt(STATISTICS_OK);
 		writeInt(cash);
+		writeString(image);
+		System.out.println("Image"+ image);
 	}
+
 		
 			
 }

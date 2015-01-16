@@ -47,6 +47,8 @@ public class SessionServer implements Protocol {
 			case DISCONNECTION_FAILED:
 				Account account = document.getStatistics(reader.getUserName(), reader.getUserId());
 				int cash = account.getCash();
+				String race = account.getImage();
+				writer.statistics(cash,race);
 				System.out.println(cash);
 				break;
 			case -1:
