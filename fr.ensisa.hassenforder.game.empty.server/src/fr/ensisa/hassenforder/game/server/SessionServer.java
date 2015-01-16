@@ -49,7 +49,8 @@ public class SessionServer implements Protocol {
 				int cash = account.getCash();
 				String race = account.getImage();
 				writer.statistics(cash,race);
-				System.out.println(cash);
+				System.out.println("cash"+cash);
+				System.out.println("race"+race);
 				break;
 			case -1:
 				break;
