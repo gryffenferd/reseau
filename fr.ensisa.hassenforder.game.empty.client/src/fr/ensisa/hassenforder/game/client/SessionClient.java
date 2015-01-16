@@ -16,6 +16,7 @@ public class SessionClient implements Protocol {	//Voir si le protocole est util
     private long id;
 	private String image;
 	private int cash;
+	private String localImage;
 	
 	public SessionClient (Socket connection) {
 		this.connection = connection;
@@ -91,7 +92,8 @@ public class SessionClient implements Protocol {	//Voir si le protocole est util
 		Reader readerClient = new Reader(connection.getInputStream());
 		readerClient.receive();
 		cash = readerClient.getCash();
-		//image = 
+		localImage = getImage("race-4.png");
+		//ImageLoader localImage = new ImageLoader()
 		Player player1 = new Player(name,image,cash);
 		return null;
 		
