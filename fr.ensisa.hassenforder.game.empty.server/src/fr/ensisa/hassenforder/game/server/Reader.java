@@ -26,11 +26,21 @@ public class Reader extends BasicAbstractReader implements Protocol {
 			break;
 		case DISCONNECTION:
 			disconnect();
+			break;
+		case STATISTICS_OK:
+			statistics();			
+		break;
 		default:
 			break;
 		}
 	}
 	
+	private void statistics() {
+		userName=readString();
+		userId=readLong();
+		
+	}
+
 	public void connect(){	
 		userName = readString();
 		userPassword = readString();
