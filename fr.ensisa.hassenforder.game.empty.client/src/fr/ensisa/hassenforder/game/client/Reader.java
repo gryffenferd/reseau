@@ -32,6 +32,9 @@ public class Reader extends BasicAbstractReader implements Protocol {
 		case DISCONNECTION_FAILED:
 			readerDisconnect();		//disconnect ko
 			break;
+		case STATISTICS_OK:			//Cas où getStatistics est ok
+			
+			break;
 		default:
 			break;
 		}

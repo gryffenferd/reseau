@@ -27,7 +27,7 @@ public class Writer extends BasicAbstractWriter implements Protocol {
 	}
 	
 	public void writerStatisctics(String name, long id){
-		writeInt(5);
+		writeInt(STATISTICS_OK);
 		writeString(name);
 		writeLong(id);
 	}

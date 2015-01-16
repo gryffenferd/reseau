@@ -39,7 +39,7 @@ public class Writer extends BasicAbstractWriter implements Protocol {
 	
 	/* 5 */
 	public void okStatistics(int cash, String fileName, byte[] content){
-		writeInt(5);
+		writeInt(STATISTICS_OK);
 		writeInt(cash);
 	}
 		

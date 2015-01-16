@@ -9,7 +9,7 @@ import fr.ensisa.hassenforder.game.model.Product;
 import fr.ensisa.hassenforder.network.FileHelper;
 import fr.ensisa.hassenforder.network.Protocol;
 
-public class SessionClient {
+public class SessionClient implements Protocol {	//Voir si le protocole est utile ici
 
 	private Socket connection;
     private String name;
