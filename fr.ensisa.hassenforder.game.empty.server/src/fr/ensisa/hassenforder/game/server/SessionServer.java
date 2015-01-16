@@ -44,7 +44,7 @@ public class SessionServer implements Protocol {
 					else
 						writer.ko();
 			break;
-			case DISCONNECTION_FAILED:
+			case STATISTICS_OK:
 				Account account = document.getStatistics(reader.getUserName(), reader.getUserId());
 				int cash = account.getCash();
 				String race = account.getImage();
