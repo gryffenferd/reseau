@@ -47,6 +47,10 @@ public class BasicAbstractWriter {
 			e.printStackTrace();
 		}
 	}
+	
+	public void writeBytes(){
+			
+	}
 
 	public void send() {
 		byte [] message = baos.toByteArray();
