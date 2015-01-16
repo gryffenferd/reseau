@@ -55,6 +55,14 @@ public class BasicAbstractReader {
 		}
 	}
 
+	/*protected byte[] readByte(){
+		try {
+			return inputStream.readByte();
+		} catch (IOException e) {
+			return 
+		}
+	}*/
+	
 	public int getType() {
 		return type;
 	}
