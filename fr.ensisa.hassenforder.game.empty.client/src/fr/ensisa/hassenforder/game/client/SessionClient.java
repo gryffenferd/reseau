@@ -30,8 +30,8 @@ public class SessionClient {
 			readerClient.receive();
 			this.id = readerClient.getUserID();
 			this.name = username;
-			System.out.println(name);
-			System.out.println(id);
+//			System.out.println(name);
+//			System.out.println(id);
 			if(readerClient.getConnectedState()){
 				//System.out.println("On SAIT pour NetBeans!!!!");
 			}
@@ -76,13 +76,20 @@ public class SessionClient {
 		}
 	}
 
-	public Player getStatistics () {
-		try {
-			if (true) throw new IOException ("not yet implemented");
-			return null;
-		} catch (IOException e) {
-			return null;
-		}
+	public Player getStatistics () throws IOException {		//
+//		try {
+//			if (true) throw new IOException ("not yet implemented");
+//			return null;
+//		} catch (IOException e) {
+//			return null;
+//		}
+		Writer writerClient = new Writer(connection.getOutputStream());
+		writerClient.writerStatisctics(name, id);
+		writerClient.send();
+		Reader readerClient = new Reader(connection.getInputStream());
+		readerClient.receive();
+		return null;
+		
 	}
 
 	public Collection<Product> getProducts () {

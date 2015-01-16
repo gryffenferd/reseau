@@ -200,7 +200,12 @@ public class GUI extends javax.swing.JFrame {
         jStatistics.setText("statistics");
         jStatistics.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jStatisticsMouseClicked(evt);
+                try {	//Ajout du try/catch le 16/01
+					jStatisticsMouseClicked(evt);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
@@ -797,8 +802,8 @@ public class GUI extends javax.swing.JFrame {
     		jStatus.setText("You failed buy "+productName);
     	}
     }//GEN-LAST:event_jImageShop3MouseClicked
-
-    private void jStatisticsMouseClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jStatisticsMouseClicked
+    //AJout de l'exception ci-dessous pour le getStatistics le 16/01
+    private void jStatisticsMouseClicked(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_jStatisticsMouseClicked
     	Player player = app.doGetStatistics();
     	if (player != null) {
     		jCash.setText("You have "+Integer.toString(player.getCash())+" coins");

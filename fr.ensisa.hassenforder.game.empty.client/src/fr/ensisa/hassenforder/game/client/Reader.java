@@ -6,7 +6,7 @@ import java.io.OutputStream;
 import fr.ensisa.hassenforder.network.BasicAbstractReader;
 import fr.ensisa.hassenforder.network.Protocol;
 
-public class Reader extends BasicAbstractReader {
+public class Reader extends BasicAbstractReader implements Protocol {
 	
 	private boolean connected;
 	private long userID;
@@ -20,10 +20,10 @@ public class Reader extends BasicAbstractReader {
 		switch (type) {
 		case 0:						//Si 0, risque de valoir la valeur d'une var non initialisée
 			break;
-		case 1: 					//connect si marche (réponse du serveur = ok)
+		case CONNECTION: 					//connect si marche (réponse du serveur = ok)
 			readerConnect();
 			break;
-		case 2:
+		case CONNECTION_FAILED:
 			readerConnectFailed();	//connect si ne marche pas (réponse du serveur = ko)
 			break;
 		case 3:						//disconnect ok

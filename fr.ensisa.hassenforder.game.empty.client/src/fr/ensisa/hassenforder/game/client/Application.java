@@ -108,7 +108,7 @@ public class Application {
 		return result;
     }
 
-    public Player doGetStatistics () {
+    public Player doGetStatistics () throws IOException { //AJout de l'exception le 16/01
     	passThrough ("doGetStatistics");
     	return network.getStatistics();
     }
