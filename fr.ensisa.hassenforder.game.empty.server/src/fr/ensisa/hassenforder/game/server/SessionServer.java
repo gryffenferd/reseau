@@ -10,7 +10,7 @@ import fr.ensisa.hassenforder.game.model.User;
 import fr.ensisa.hassenforder.network.FileHelper;
 import fr.ensisa.hassenforder.network.Protocol;
 
-public class SessionServer {
+public class SessionServer implements Protocol {
 
 	private Socket connection;
 	private Document document;
@@ -29,7 +29,7 @@ public class SessionServer {
 			switch (reader.getType()) {
 			case 0:
 				return false; // socket closed
-			case 1:
+			case CONNECTION:
 				User usercurrent = document.connect(reader.getUserName(),
 						reader.getUserPassword());
 				if (usercurrent == null)
@@ -37,14 +37,14 @@ public class SessionServer {
 				else
 					writer.okConnect(usercurrent.getId());
 			break;
-			case 3:
+			case DISCONNECTION:
 					if (document.disconnect(reader.getUserName(),
 							reader.getUserId()))
 						writer.okDisconnect();
 					else
 						writer.ko();
 			break;
-			case 4:
+			case DISCONNECTION_FAILED:
 				Account account = document.getStatistics(reader.getUserName(), reader.getUserId());
 				int cash = account.getCash();
 				System.out.println(cash);
