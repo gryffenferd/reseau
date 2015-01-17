@@ -54,7 +54,7 @@ public class SessionClient implements Protocol {	//Voir si le protocole est util
 		writerClient.writerAdd(name, id,amount);
 		writerClient.send();
 		Reader readerClient = new Reader(connection.getInputStream());
-		System.out.println("reader cash: "+cash);
+		cash = readerClient.getCash();
 		readerClient.receive();
 		return !readerClient.getAdd();
 	}
@@ -90,7 +90,6 @@ public class SessionClient implements Protocol {	//Voir si le protocole est util
 		Reader readerClient = new Reader(connection.getInputStream());
 		readerClient.receive();
 		cash = readerClient.getCash();
-		System.out.println("cash session: "+cash);
 		localImage = getImage("./res/race-4.png");
 		
 		Player player1 = new Player(name,localImage,cash);
