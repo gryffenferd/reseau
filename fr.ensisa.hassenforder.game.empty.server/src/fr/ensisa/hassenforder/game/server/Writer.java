@@ -61,6 +61,11 @@ public class Writer extends BasicAbstractWriter implements Protocol {
 		writeBoolean(stackable);
 		writeInt(count);
 	}
+
+	public void clear() {
+		writeInt(CLEAR);
+		writeBoolean(true);		
+	}
 		
 			
 }

@@ -92,6 +92,13 @@ public class SessionServer implements Protocol {
 				 }	   			
 			break;				
 			
+			case CLEAR:
+				if(document.clearProducts(reader.getUserName(), reader.getUserId()))
+					writer.clear();
+				else
+					writer.ko();
+			break;
+			
 			case -1:
 				break;
 			default:
