@@ -54,7 +54,7 @@ public class SessionClient implements Protocol {	//Voir si le protocole est util
 
 	public boolean addCash (int amount) throws IOException {
 		Writer writerClient = new Writer(connection.getOutputStream());
-		writerClient.writerAdd(name, amount);
+		writerClient.writerAdd(name, amount,cash);
 		writerClient.send();
 		Reader readerClient = new Reader(connection.getInputStream());
 		readerClient.receive();
