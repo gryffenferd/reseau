@@ -55,7 +55,7 @@ public class BasicAbstractReader {
 		}
 	}
 
-	protected byte[] readByte(Long length){
+	protected byte[] readByte(long length){
 		byte[] input = null;
 		try{
 			for(long l=0; l<length ; l++)

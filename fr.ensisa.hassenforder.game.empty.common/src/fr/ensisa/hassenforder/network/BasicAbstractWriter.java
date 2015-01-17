@@ -48,9 +48,13 @@ public class BasicAbstractWriter {
 		}
 	}
 	
-	public void writeBytes(){
-			
+	protected void writeBytes(long length){
+//			byte [] output = null;
+//			for(long l=0;l<length;l++)
+//				output[(int)l]=outputStream.writeByte();
+//			return output;
 	}
+	
 
 	public void send() {
 		byte [] message = baos.toByteArray();
