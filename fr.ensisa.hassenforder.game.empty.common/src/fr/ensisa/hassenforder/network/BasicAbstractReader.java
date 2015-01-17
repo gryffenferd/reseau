@@ -59,7 +59,7 @@ public class BasicAbstractReader {
 		try{
 			System.out.println("dans readBytes");
 			byte[] input = null; 
-			for(int l=0; l<length ; l++)
+			for(int l=0; l<=length ; l++)
 			{
 				System.out.println(length);
 				System.out.println(l);
