@@ -55,13 +55,16 @@ public class BasicAbstractReader {
 		}
 	}
 
-	/*protected byte[] readByte(){
-		try {
-			return inputStream.readByte();
+	protected byte[] readByte(Long length){
+		byte[] input = null;
+		try{
+			for(long l=0; l<length ; l++)
+				input[(int)l]=inputStream.readByte();
+			return input;
 		} catch (IOException e) {
-			return 
+			return null;
 		}
-	}*/
+	}
 	
 	public int getType() {
 		return type;
