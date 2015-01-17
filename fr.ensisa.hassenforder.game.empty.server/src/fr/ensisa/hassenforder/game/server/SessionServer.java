@@ -105,6 +105,7 @@ public class SessionServer implements Protocol {
 				else
 					writer.ko();
 			break;
+			
 			case -1:
 				break;
 			default:
