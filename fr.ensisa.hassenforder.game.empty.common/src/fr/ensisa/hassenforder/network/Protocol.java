@@ -13,5 +13,6 @@ public interface Protocol {
 	public static final int STATISTICS_OK = 5;
 	public static final int ADD = 6;
 	public static final int SUB = 7;
+	public static final int PRODUCT = 8;
 	
 }

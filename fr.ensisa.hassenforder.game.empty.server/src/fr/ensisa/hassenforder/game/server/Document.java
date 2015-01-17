@@ -22,11 +22,11 @@ public class Document {
 	}
 
 	private boolean isConnected (String name, long id) {
-		if (name == null) return false;
-		if (! connected.exists(name)) return false;
+		if (name == null)return false;
+		if (! connected.exists(name))return false;
 		User user = connected.get(name);
 		user.resetTime();
-		if (id != user.getId()) return false;
+		if (id != user.getId())return false;
 		return true;
 	}
 
@@ -43,7 +43,7 @@ public class Document {
 	 * Debug API
 	 */
 	public boolean addCash (String name, long id, int cash) {
-		if (! isConnected(name, id)) return false;
+		if (! isConnected(name, id))return false;
 		Account account = accounts.get(name);
 		return account.addCash(cash);
 	}

@@ -55,42 +55,27 @@ public class SessionServer implements Protocol {
 				byte[] content = FileHelper.readContent("./res/" + race
 						+ ".png");
 				long size = FileHelper.getFileSize("./res/" + race + ".png");
-				System.out.println("cash: " + cash);
+				System.out.println("cash stat: " + cash);
 				System.out.println("race: " + race);
 				System.out.println("size: " + size);
 				writer.statistics(cash, size, race, content);
 				break;
 
 			case ADD:
-				System.out.println("cash: "
-						+ document.getStatistics(reader.getUserName(),
-								reader.getUserId()).getCash());
 				if (document.addCash(
 						reader.getUserName(),
-						reader.getUserId(),
-						document.getStatistics(reader.getUserName(),
-								reader.getUserId()).getCash())) {
+						reader.getUserId(),reader.getAmount())) {
 					writer.cash();
-					System.out.println("cash: "
-							+ document.getStatistics(reader.getUserName(),
-									reader.getUserId()).getCash());
 				} else
 					writer.ko();
 			break;
 
 			case SUB:
-				System.out.println("cash: "
-						+ document.getStatistics(reader.getUserName(),
-								reader.getUserId()).getCash());
 				if (document.addCash(
 						reader.getUserName(),
 						reader.getUserId(),
-						- document.getStatistics(reader.getUserName(),
-								reader.getUserId()).getCash())) {
+						- reader.getAmount())) {
 					writer.cash();
-					System.out.println("cash: "
-							+ document.getStatistics(reader.getUserName(),
-									reader.getUserId()).getCash());
 				} else
 					writer.ko();
 			break;

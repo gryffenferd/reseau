@@ -11,6 +11,7 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	private String userName;
 	private String userPassword;
 	private Long userId;
+	private int amount;
 	
 	public Reader(InputStream inputStream) {
 		super (inputStream);
@@ -43,7 +44,8 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	
 	private void cash() {
 		userName=readString();
-		userId=readLong();		
+		userId=readLong();
+		amount=readInt();
 	}
 
 	private void statistics() {
@@ -71,6 +73,10 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	
 	public Long getUserId(){
 		return this.userId;
+	}
+	
+	public int getAmount(){
+		return this.amount;
 	}
 	
 }

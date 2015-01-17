@@ -33,10 +33,7 @@ public class SessionClient implements Protocol {	//Voir si le protocole est util
 			readerClient.receive();
 			this.id = readerClient.getUserID();
 			this.name = username;
-//			System.out.println(name);
-//			System.out.println(id);
 			if(readerClient.getConnectedState()){
-				//System.out.println("On SAIT pour NetBeans!!!!");
 			}
 			return readerClient.getConnectedState();
 	}
@@ -54,11 +51,12 @@ public class SessionClient implements Protocol {	//Voir si le protocole est util
 
 	public boolean addCash (int amount) throws IOException {
 		Writer writerClient = new Writer(connection.getOutputStream());
-		writerClient.writerAdd(name, amount,cash);
+		writerClient.writerAdd(name, id,amount);
 		writerClient.send();
 		Reader readerClient = new Reader(connection.getInputStream());
+		System.out.println("reader cash: "+cash);
 		readerClient.receive();
-		return readerClient.getAdd();
+		return !readerClient.getAdd();
 	}
 
 	public boolean clearProducts () {
@@ -92,6 +90,7 @@ public class SessionClient implements Protocol {	//Voir si le protocole est util
 		Reader readerClient = new Reader(connection.getInputStream());
 		readerClient.receive();
 		cash = readerClient.getCash();
+		System.out.println("cash session: "+cash);
 		localImage = getImage("./res/race-4.png");
 		
 		Player player1 = new Player(name,localImage,cash);
