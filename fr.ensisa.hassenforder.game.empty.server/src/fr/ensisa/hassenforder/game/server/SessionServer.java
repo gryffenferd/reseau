@@ -50,10 +50,9 @@ public class SessionServer implements Protocol {
 				String race = account.getImage();
 				byte[] content = FileHelper.readContent("./res/"+race+".png");
 				long size = FileHelper.getFileSize("./res/"+race+".png");
-				FileHelper.writeContent(race, content);
 				System.out.println("cash: "+cash);
 				System.out.println("race: "+race);					
-				System.out.println("size: " +size);				
+				System.out.println("size: "+size);				
 				writer.statistics(cash,size,race,content);		
 			break;
 			case -1:
