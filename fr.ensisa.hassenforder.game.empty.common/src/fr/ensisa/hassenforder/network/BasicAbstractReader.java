@@ -56,10 +56,13 @@ public class BasicAbstractReader {
 	}
 
 	protected byte[] readBytes(long length){
-		byte[] input = null;
 		try{
+			byte[] input = null; 
 			for(long l=0; l<length ; l++)
+			{
+				System.out.println("dans readBytes");
 				input[(int)l]=inputStream.readByte();
+			}
 			return input;
 		} catch (IOException e) {
 			return null;
