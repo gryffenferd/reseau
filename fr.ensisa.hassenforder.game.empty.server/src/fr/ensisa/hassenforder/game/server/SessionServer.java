@@ -52,7 +52,7 @@ public class SessionServer implements Protocol {
 				System.out.println("cash :"+cash);
 				System.out.println("race :"+race);
 				FileHelper fh = new FileHelper();
-				System.out.println(fh.getFileSize("./res/race-1.png"));
+				System.out.println("size:" + fh.getFileSize("./res/race-1.png"));
 				
 				break;
 			case -1:
