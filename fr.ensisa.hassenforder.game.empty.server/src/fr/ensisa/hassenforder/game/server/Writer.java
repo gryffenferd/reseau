@@ -46,7 +46,7 @@ public class Writer extends BasicAbstractWriter implements Protocol {
 		writeBytes(content);
 	}
 
-	public void add() {
+	public void cash() {
 		writeInt(ADD);
 		writeBoolean(true);		
 	}

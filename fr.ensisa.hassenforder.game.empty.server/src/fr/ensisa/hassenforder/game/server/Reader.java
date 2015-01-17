@@ -31,14 +31,17 @@ public class Reader extends BasicAbstractReader implements Protocol {
 			statistics();			
 		break;
 		case ADD:
-			add();
+			cash();
+		break;
+		case SUB:
+			cash();
 		break;
 		default:
 			break;
 		}
 	}
 	
-	private void add() {
+	private void cash() {
 		userName=readString();
 		userId=readLong();		
 	}
@@ -46,7 +49,6 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	private void statistics() {
 		userName=readString();
 		userId=readLong();
-		
 	}
 
 	public void connect(){	

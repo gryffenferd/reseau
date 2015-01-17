@@ -62,18 +62,39 @@ public class SessionServer implements Protocol {
 				break;
 
 			case ADD:
-				System.out.println("cash: "+document.getStatistics(reader.getUserName(),
-						reader.getUserId()).getCash());
-				if(document.addCash(reader.getUserName(),reader.getUserId(),document.getStatistics(reader.getUserName(),reader.getUserId()).getCash()))
-				{	
-					writer.add();
-					System.out.println("cash: "+document.getStatistics(reader.getUserName(),
-						reader.getUserId()).getCash());
-				}
-				else
+				System.out.println("cash: "
+						+ document.getStatistics(reader.getUserName(),
+								reader.getUserId()).getCash());
+				if (document.addCash(
+						reader.getUserName(),
+						reader.getUserId(),
+						document.getStatistics(reader.getUserName(),
+								reader.getUserId()).getCash())) {
+					writer.cash();
+					System.out.println("cash: "
+							+ document.getStatistics(reader.getUserName(),
+									reader.getUserId()).getCash());
+				} else
 					writer.ko();
-				break;
-				
+			break;
+
+			case SUB:
+				System.out.println("cash: "
+						+ document.getStatistics(reader.getUserName(),
+								reader.getUserId()).getCash());
+				if (document.addCash(
+						reader.getUserName(),
+						reader.getUserId(),
+						- document.getStatistics(reader.getUserName(),
+								reader.getUserId()).getCash())) {
+					writer.cash();
+					System.out.println("cash: "
+							+ document.getStatistics(reader.getUserName(),
+									reader.getUserId()).getCash());
+				} else
+					writer.ko();
+			break;
+			
 			case -1:
 				break;
 			default:
