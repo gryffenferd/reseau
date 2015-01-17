@@ -92,10 +92,10 @@ public class SessionClient implements Protocol {	//Voir si le protocole est util
 		Reader readerClient = new Reader(connection.getInputStream());
 		readerClient.receive();
 		cash = readerClient.getCash();
-		localImage = getImage("/res/race-4.png");
-		//ImageLoader localImage = new ImageLoader()
-		Player player1 = new Player(name,image,cash);
-		return null;
+		localImage = getImage("./res/race-4.png");
+		
+		Player player1 = new Player(name,localImage,cash);
+		return player1;
 		
 	}
 
@@ -145,11 +145,6 @@ public class SessionClient implements Protocol {	//Voir si le protocole est util
 	}
 
 	public String getImage (String imageName) {
-		try {
-			if (true) throw new IOException ("not yet implemented");
-			return "";
-		} catch (IOException e) {
-			return null;
-		}
+			return imageName;
 	}
 }

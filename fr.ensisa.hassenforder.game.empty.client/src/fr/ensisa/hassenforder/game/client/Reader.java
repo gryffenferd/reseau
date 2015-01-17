@@ -77,7 +77,6 @@ public class Reader extends BasicAbstractReader implements Protocol {
 		cash = readInt();
 		length = readLong();
 		filename = readString();
-		System.out.println(length);
 		content = readBytes((int)length);
 		
 	}
