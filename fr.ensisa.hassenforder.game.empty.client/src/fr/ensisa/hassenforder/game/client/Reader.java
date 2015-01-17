@@ -11,6 +11,10 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	private boolean connected;
 	private long userID;
 	private int cash;
+	private long length;
+	private String filename;
+	private byte[] content;
+	private boolean add;
 
 	public Reader(InputStream inputStream) {
 		super (inputStream);
@@ -35,6 +39,9 @@ public class Reader extends BasicAbstractReader implements Protocol {
 			break;
 		case STATISTICS_OK:			//Cas où getStatistics est ok
 			readerStatistics();
+			break;
+		case ADD:
+			readerAdd();
 			break;
 		default:
 			break;
@@ -61,9 +68,17 @@ public class Reader extends BasicAbstractReader implements Protocol {
 		return this.connected;
 	}
 	
+	public void readerAdd(){
+		add = readBoolean();
+	}
 	
-	public void readerStatistics(){	//Lit le cash
+	
+	public void readerStatistics(){	//Take cash + image
 		cash = readInt();
+		length = readLong();
+		filename = readString();
+		content = readBytes(length);
+		
 	}
 	
 	public long getUserID(){
