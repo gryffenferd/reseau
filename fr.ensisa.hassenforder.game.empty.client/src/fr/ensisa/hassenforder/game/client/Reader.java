@@ -80,7 +80,6 @@ public class Reader extends BasicAbstractReader implements Protocol {
 		System.out.println(length);
 		content = readBytes((int)length);
 		
-		
 	}
 	
 	public long getUserID(){
@@ -91,5 +90,8 @@ public class Reader extends BasicAbstractReader implements Protocol {
 		return this.cash;
 	}
 	
+	public boolean getAdd(){
+		return this.add;
+	}
 	
 }

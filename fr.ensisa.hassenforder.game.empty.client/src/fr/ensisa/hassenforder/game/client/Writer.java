@@ -36,6 +36,12 @@ public class Writer extends BasicAbstractWriter implements Protocol {
 		writeLong(id);
 	}
 	
+	public void writerAdd(String name, long id){
+		writeInt(ADD);
+		writeString(name);
+		writeLong(id);
+	}
+	
 
 	
 }

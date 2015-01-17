@@ -52,13 +52,13 @@ public class SessionClient implements Protocol {	//Voir si le protocole est util
 			return readerClient.getConnectedState();
 	}
 
-	public boolean addCash (int amount) {
-		try {
-			if (true) throw new IOException ("not yet implemented");
-			return true;
-		} catch (IOException e) {
-			return false;
-		}
+	public boolean addCash (int amount) throws IOException {
+		Writer writerClient = new Writer(connection.getOutputStream());
+		writerClient.writerAdd(name, amount);
+		writerClient.send();
+		Reader readerClient = new Reader(connection.getInputStream());
+		readerClient.receive();
+		return readerClient.getAdd();
 	}
 
 	public boolean clearProducts () {

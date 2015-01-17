@@ -166,18 +166,28 @@ public class GUI extends javax.swing.JFrame {
 
         jImage.setText("image");
         jImage.setBorderPainted(false);
-        
+      //NEW TRY/CATCH EN DESSOUS là
         jAddCash.setText("add");
         jAddCash.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jAddCashMouseClicked(evt);
+                try {
+					jAddCashMouseClicked(evt);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
-
+      //NEW try/catch ici
         jSubCash.setText("sub");
         jSubCash.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jSubCashMouseClicked(evt);
+                try {
+					jSubCashMouseClicked(evt);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
@@ -892,7 +902,7 @@ public class GUI extends javax.swing.JFrame {
     	}
     }//GEN-LAST:event_jRefreshMouseClicked
 
-    private void jAddCashMouseClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jAddCashMouseClicked
+    private void jAddCashMouseClicked(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_jAddCashMouseClicked
     	boolean r = app.doAddCash(500);
     	if (r) {
     		jStatus.setText("You successfully receive coins");
@@ -900,8 +910,8 @@ public class GUI extends javax.swing.JFrame {
     		jStatus.setText("You failed to receive coins");
     	}
     }//GEN-LAST:event_jAddCashMouseClicked
-
-    private void jSubCashMouseClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSubCashMouseClicked
+	//NEW THROWS EXCPETION
+    private void jSubCashMouseClicked(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_jSubCashMouseClicked
     	boolean r = app.doSubCash(200);
     	if (r) {
     		jStatus.setText("You successfully spend coins");
@@ -909,7 +919,7 @@ public class GUI extends javax.swing.JFrame {
     		jStatus.setText("You failed to spend coins");
     	}
     }//GEN-LAST:event_jSubCashMouseClicked
-
+  //NEW THROWS EXCPETION
     private void jClearMouseClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jClearMouseClicked
     	boolean r = app.doClearProducts();
     	if (r) {

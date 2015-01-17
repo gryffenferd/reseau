@@ -55,12 +55,12 @@ public class Application {
     	System.out.println("Pass Through "+id+" count "+count);
     }
 
-    public boolean doAddCash(int amount) {
+    public boolean doAddCash(int amount) throws IOException {
     	passThrough ("doAddCash");
     	return network.addCash(amount);
     }
 
-    public boolean doSubCash(int amount) {
+    public boolean doSubCash(int amount) throws IOException {
     	passThrough ("doSubCash");
     	return network.addCash(-amount);
     }
