@@ -3,7 +3,7 @@ Type Writer :
 2.koConnect -> boolean false
 3.Disconnect -> boolean true
 4.ko -> boolean false
-5.Statistics -> int cash, String NameImage (dans le FileHelper), Byte[] contenu image
+5.Statistics -> int cash, long lengthImage , String NameImage (dans le FileHelper), Byte[] contenuImage
 6.SetProduct ->
 7.getShop -> 
 8.add -> int cash
