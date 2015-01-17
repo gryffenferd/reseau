@@ -29,6 +29,7 @@ public class SessionServer implements Protocol {
 			switch (reader.getType()) {
 			case 0:
 				return false; // socket closed
+
 			case CONNECTION:
 				User usercurrent = document.connect(reader.getUserName(),
 						reader.getUserPassword());
@@ -36,25 +37,43 @@ public class SessionServer implements Protocol {
 					writer.koConnect();
 				else
 					writer.okConnect(usercurrent.getId());
-			break;
+				break;
+
 			case DISCONNECTION:
-					if (document.disconnect(reader.getUserName(),
-							reader.getUserId()))
-						writer.okDisconnect();
-					else
-						writer.ko();
-			break;
+				if (document.disconnect(reader.getUserName(),
+						reader.getUserId()))
+					writer.okDisconnect();
+				else
+					writer.ko();
+				break;
+
 			case STATISTICS_OK:
-				Account account = document.getStatistics(reader.getUserName(), reader.getUserId());
+				Account account = document.getStatistics(reader.getUserName(),
+						reader.getUserId());
 				int cash = account.getCash();
 				String race = account.getImage();
-				byte[] content = FileHelper.readContent("./res/"+race+".png");
-				long size = FileHelper.getFileSize("./res/"+race+".png");
-				System.out.println("cash: "+cash);
-				System.out.println("race: "+race);					
-				System.out.println("size: "+size);				
-				writer.statistics(cash,size,race,content);		
-			break;
+				byte[] content = FileHelper.readContent("./res/" + race
+						+ ".png");
+				long size = FileHelper.getFileSize("./res/" + race + ".png");
+				System.out.println("cash: " + cash);
+				System.out.println("race: " + race);
+				System.out.println("size: " + size);
+				writer.statistics(cash, size, race, content);
+				break;
+
+			case ADD:
+				System.out.println("cash: "+document.getStatistics(reader.getUserName(),
+						reader.getUserId()).getCash());
+				if(document.addCash(reader.getUserName(),reader.getUserId(),document.getStatistics(reader.getUserName(),reader.getUserId()).getCash()))
+				{	
+					writer.add();
+					System.out.println("cash: "+document.getStatistics(reader.getUserName(),
+						reader.getUserId()).getCash());
+				}
+				else
+					writer.ko();
+				break;
+				
 			case -1:
 				break;
 			default:

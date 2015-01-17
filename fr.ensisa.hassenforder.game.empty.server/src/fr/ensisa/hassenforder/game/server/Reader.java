@@ -20,21 +20,29 @@ public class Reader extends BasicAbstractReader implements Protocol {
 		type = readInt ();
 		switch (type) {
 		case 0 :
-			break;
+		break;
 		case CONNECTION:
 			connect();
-			break;
+		break;
 		case DISCONNECTION:
 			disconnect();
-			break;
+		break;
 		case STATISTICS_OK:
 			statistics();			
+		break;
+		case ADD:
+			add();
 		break;
 		default:
 			break;
 		}
 	}
 	
+	private void add() {
+		userName=readString();
+		userId=readLong();		
+	}
+
 	private void statistics() {
 		userName=readString();
 		userId=readLong();

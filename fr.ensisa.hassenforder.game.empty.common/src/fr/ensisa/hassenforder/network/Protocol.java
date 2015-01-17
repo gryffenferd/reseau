@@ -9,7 +9,8 @@ public interface Protocol {
 	public static final int CONNECTION = 1;
 	public static final int CONNECTION_FAILED = 2;
 	public static final int DISCONNECTION = 3;
-	public static final int DISCONNECTION_FAILED = 4;
+	public static final int FAILED= 4;
 	public static final int STATISTICS_OK = 5;
+	public static final int ADD = 6;
 	
 }

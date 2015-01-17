@@ -33,7 +33,7 @@ public class Writer extends BasicAbstractWriter implements Protocol {
 	
 	/* 4 */
 	public void ko(){
-		writeInt(DISCONNECTION_FAILED);
+		writeInt(FAILED);
 		writeBoolean(false);
 	}
 	
@@ -44,6 +44,11 @@ public class Writer extends BasicAbstractWriter implements Protocol {
 		writeLong(lengthImage);
 		writeString(nameImage);
 		writeBytes(content);
+	}
+
+	public void add() {
+		writeInt(ADD);
+		writeBoolean(true);		
 	}
 
 		
