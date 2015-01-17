@@ -57,12 +57,9 @@ public class BasicAbstractReader {
 
 	protected byte[] readBytes(long length){
 		try{
-			System.out.println("dans readBytes");
 			byte[] input = null; 
 			for(int l=0; l<=length ; l++)
 			{
-				System.out.println(length);
-				System.out.println(l);
 				while(inputStream.available()<0)
 					input[l]=inputStream.readByte();
 			}
