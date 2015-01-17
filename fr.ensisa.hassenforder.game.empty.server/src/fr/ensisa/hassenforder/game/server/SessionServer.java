@@ -99,6 +99,12 @@ public class SessionServer implements Protocol {
 					writer.ko();
 			break;
 			
+			case CONSUME:
+				if(document.consumeProducts(reader.getUserPassword(), reader.getUserId()))
+					writer.consume();
+				else
+					writer.ko();
+			break;
 			case -1:
 				break;
 			default:

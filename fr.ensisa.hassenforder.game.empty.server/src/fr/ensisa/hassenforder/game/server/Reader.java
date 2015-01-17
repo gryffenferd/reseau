@@ -43,6 +43,9 @@ public class Reader extends BasicAbstractReader implements Protocol {
 		case CLEAR:
 			statistics();
 		break;
+		case CONSUME:
+			statistics();
+		break;
 		default:
 			break;
 		}

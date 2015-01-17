@@ -8,3 +8,4 @@ Type Writer :
 7.sub -> boolean true
 8.product -> int category,String name,String image, int duration, long time, boolean stackable, int count
 9.clear -> boolean true
+10.consume -> boolean true

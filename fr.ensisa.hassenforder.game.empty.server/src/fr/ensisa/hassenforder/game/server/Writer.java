@@ -66,6 +66,11 @@ public class Writer extends BasicAbstractWriter implements Protocol {
 		writeInt(CLEAR);
 		writeBoolean(true);		
 	}
+
+	public void consume() {
+		writeInt(CONSUME);
+		writeBoolean(true);		
+	}
 		
 			
 }

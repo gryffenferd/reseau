@@ -15,5 +15,6 @@ public interface Protocol {
 	public static final int SUB = 7;
 	public static final int PRODUCT = 8;
 	public static final int CLEAR = 9;
+	public static final int CONSUME = 10;
 	
 }
