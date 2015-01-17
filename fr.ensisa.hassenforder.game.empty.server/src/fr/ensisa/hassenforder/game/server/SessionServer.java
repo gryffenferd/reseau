@@ -48,13 +48,14 @@ public class SessionServer implements Protocol {
 				Account account = document.getStatistics(reader.getUserName(), reader.getUserId());
 				int cash = account.getCash();
 				String race = account.getImage();
-				writer.statistics(cash,race);
-				System.out.println("cash :"+cash);
-				System.out.println("race :"+race);
-				FileHelper fh = new FileHelper();
-				System.out.println("size:" + fh.getFileSize("./res/race-1.png"));
-				
-				break;
+				byte[] content = FileHelper.readContent("./res/"+race+".png");
+				long size = FileHelper.getFileSize("./res/"+race+".png");
+				FileHelper.writeContent(race, content);
+				System.out.println("cash: "+cash);
+				System.out.println("race: "+race);					
+				System.out.println("size: " +size);				
+				writer.statistics(cash,size,race,content);		
+			break;
 			case -1:
 				break;
 			default:
