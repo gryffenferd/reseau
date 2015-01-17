@@ -3,8 +3,10 @@ package fr.ensisa.hassenforder.game.server;
 import java.io.IOException;
 import java.net.Socket;
 import java.util.Collection;
+import java.util.Iterator;
 
 import fr.ensisa.hassenforder.game.model.Account;
+import fr.ensisa.hassenforder.game.model.Category;
 import fr.ensisa.hassenforder.game.model.Product;
 import fr.ensisa.hassenforder.game.model.User;
 import fr.ensisa.hassenforder.network.FileHelper;
@@ -79,6 +81,16 @@ public class SessionServer implements Protocol {
 				} else
 					writer.ko();
 			break;
+			
+			case PRODUCT:
+				Collection<Product> p;
+				p=document.getProducts(reader.getUserPassword(), reader.getUserId());
+				Iterator<Product> it = p.iterator() ;
+				 while (it.hasNext()) {
+				    Product prod = it.next();
+				    writer.product(prod.getCategory().ordinal(), prod.getName(), prod.getImage(), prod.getDuration(), prod.getTime(), prod.isStackable(), prod.getCount());
+				 }	   			
+			break;				
 			
 			case -1:
 				break;
