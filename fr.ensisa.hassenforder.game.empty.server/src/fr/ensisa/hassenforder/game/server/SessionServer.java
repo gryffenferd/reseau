@@ -85,9 +85,10 @@ public class SessionServer implements Protocol {
 			case PRODUCT:
 				Collection<Product> p;
 				p=document.getProducts(reader.getUserPassword(), reader.getUserId());
-				Iterator<Product> it = p.iterator() ;
-				 while (it.hasNext()) {
-				    Product prod = it.next();
+				writer.prooductD();
+				Iterator<Product> itp = p.iterator() ;
+				 while (itp.hasNext()) {
+				    Product prod = itp.next();
 				    writer.product(prod.getCategory().ordinal(), prod.getName(), prod.getImage(), prod.getDuration(), prod.getTime(), prod.isStackable(), prod.getCount());
 				 }	   			
 			break;				
@@ -107,6 +108,14 @@ public class SessionServer implements Protocol {
 			break;
 			
 			case SHOP:
+				Collection<Product> s;
+				s=document.getShop(reader.getUserPassword(), reader.getUserId());
+				writer.shopD();
+				Iterator<Product> its = s.iterator() ;
+				 while (its.hasNext()) {
+				    Product prod = its.next();
+				    writer.shop(prod.getCategory().ordinal(), prod.getName(), prod.getImage(), prod.getDuration(), prod.getTime(), prod.isStackable(), prod.getCount());
+				 }	
 			break;
 			case -1:
 				break;
