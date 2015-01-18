@@ -82,11 +82,15 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	}
 	
 	public void readerStatistics(){	//Take cash + image
-		//System.out.println("je suis là");
 		cash = readInt();
 		length = readLong();
 		filename = readString();
 		content = readBytes(length);	
+	}
+	
+	public void readerProducts(){
+		int taille = readInt();
+		
 	}
 	
 	public long getUserID(){
@@ -108,5 +112,6 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	public byte[] getContent(){
 		return this.content;
 	}
+	
 	
 }

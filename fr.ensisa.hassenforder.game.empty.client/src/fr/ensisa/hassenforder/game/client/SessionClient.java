@@ -93,13 +93,9 @@ public class SessionClient implements Protocol {	//Voir si le protocole est util
 		return player1;	
 	}
 
-	public Collection<Product> getProducts () {
-		try {
-			if (true) throw new IOException ("not yet implemented");
-			return null;
-		} catch (IOException e) {
-			return null;
-		}
+	public Collection<Product> getProducts() {
+		Writer writerClient = new Writer(connection.getOutputStream());
+		writerClient.writerProducts(name, id);
 	}
 
 	public Collection<Product> getShop () {
