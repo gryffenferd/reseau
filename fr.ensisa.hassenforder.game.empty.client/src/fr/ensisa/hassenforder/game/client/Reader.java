@@ -106,7 +106,7 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	}
 	
 	public void readerProd(int taille){
-		Collection<Product> products = null;
+		Collection<Product> products;
 		for (int i = 0; i<=taille;i++){
 		
 			int category1 = readInt();
@@ -131,8 +131,12 @@ public class Reader extends BasicAbstractReader implements Protocol {
 			int countP = readInt();
 			Product p = new Product(category,nameP,imageP,duration,stackable,countP,timeP);
 			System.out.println(p.getCategory()+p.getName()+p.getImage()+p.getDuration());
-			System.out.println(products.add(p));
+			//System.out.println(products.add(p));
+			//Collection<Product> products
+			products.isEmpty();
+			System.out.println(products);
 			products.add(p);
+			System.out.println(products);
 			prod = products;
 		}
 		
