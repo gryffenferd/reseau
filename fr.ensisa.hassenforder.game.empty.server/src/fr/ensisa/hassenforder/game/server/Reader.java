@@ -3,6 +3,7 @@ package fr.ensisa.hassenforder.game.server;
 
 import java.io.InputStream;
 
+import fr.ensisa.hassenforder.game.model.Product;
 import fr.ensisa.hassenforder.network.BasicAbstractReader;
 import fr.ensisa.hassenforder.network.Protocol;
 
