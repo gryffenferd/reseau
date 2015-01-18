@@ -15,6 +15,7 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	private String filename;
 	private byte[] content;
 	private boolean add;
+	private int type=0;
 
 	public Reader(InputStream inputStream) {
 		super (inputStream);
@@ -22,36 +23,36 @@ public class Reader extends BasicAbstractReader implements Protocol {
 
 	public void receive() {
 		type = readInt ();
-		System.out.println("type:"+type);
 		switch (type) {
 		case 0:						//Si 0, risque de valoir la valeur d'une var non initialisée
 			break;
 		case CONNECTION: 					//connect si marche (réponse du serveur = ok)
 			readerConnect();
-			System.out.println("connection");
+			//System.out.println("connection");
 			break;
 		case CONNECTION_FAILED:
 			readerConnectFailed();	//connect si ne marche pas (réponse du serveur = ko)
-			System.out.println("failed connexion");
+			//System.out.println("failed connexion");
 			break;
 		case DISCONNECTION:						//disconnect ok
-			System.out.println("deconnexion");
+			//System.out.println("deconnexion");
 			readerDisconnect();
 			break;
 		case FAILED:
 			readerDisconnect();		//disconnect ko
-			System.out.println("KO");
+			//System.out.println("KO");
 			break;
 		case STATISTICS_OK:			//Cas où getStatistics est ok
 			readerStatistics();
-			System.out.println("stats");
+			//System.out.println("stats");
+			//System.out.println("type stats"+type);
 			break;
 		case ADD:
 			readerAdd();
-			System.out.println("add");
+			//System.out.println("add");
 			break;
 		default:
-			System.out.println("default");
+			//System.out.println("default");
 			break;
 		}
 	}
@@ -81,6 +82,7 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	}
 	
 	public void readerStatistics(){	//Take cash + image
+		//System.out.println("je suis là");
 		cash = readInt();
 		length = readLong();
 		filename = readString();
@@ -97,6 +99,14 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	
 	public boolean getAdd(){
 		return this.add;
+	}
+	
+	public String getFilename(){
+		return this.filename;
+	}
+	
+	public byte[] getContent(){
+		return this.content;
 	}
 	
 }
