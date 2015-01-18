@@ -7,6 +7,7 @@ import java.util.Collection;
 import fr.ensisa.hassenforder.game.model.Category;
 import fr.ensisa.hassenforder.game.model.Product;
 import fr.ensisa.hassenforder.network.BasicAbstractReader;
+import fr.ensisa.hassenforder.network.FileHelper;
 import fr.ensisa.hassenforder.network.Protocol;
 
 public class Reader extends BasicAbstractReader implements Protocol {
@@ -68,10 +69,13 @@ public class Reader extends BasicAbstractReader implements Protocol {
 		case CONSUME:
 			readerConsume();
 			break;
-			//System.out.println("default");
+		case SHOP:
+			readerGetShop();
+			break;
 		case REFRESH:
 			readerRefresh();
 			break;
+
 		default:
 			break;
 		}
@@ -110,7 +114,6 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	
 	public void readerProducts(){
 		int taille = readInt();
-		
 		readerProd(taille);	
 	}
 	
@@ -118,7 +121,8 @@ public class Reader extends BasicAbstractReader implements Protocol {
 		ArrayList<Product> products = new ArrayList<Product>();
 		for (int i = 0; i<taille;i++){
 			
-			int category1 = readInt();
+			int category1 = readInt();//
+			
 			Category category = null;
 			switch(category1){
 			case 0:
@@ -134,21 +138,22 @@ public class Reader extends BasicAbstractReader implements Protocol {
 			String nameP = readString();
 			String imageTMP = readString();
 			String imageP = "./res/"+imageTMP+".png";
+			long sizeP = readLong();
+			byte[] contentP = readBytes(sizeP);
+			FileHelper.writeContent(imageP, contentP);	
 			int duration = readInt();
 			long timeP = readLong();
 			boolean stackable = readBoolean();
 			int countP = readInt();
 			Product p = new Product(category,nameP,imageP,duration,stackable,countP,timeP);
-			System.out.println(p.getCategory()+p.getName()+p.getImage()+p.getDuration());
-			//System.out.println(products.add(p));
 			products.add(p);
-			
-			
-			System.out.println(products);
 		}
 		prod = products;
-		System.out.println("ici"+prod);
-		
+	}
+	
+	public void readerGetShop(){
+		int taille = readInt();
+		readerShop(taille);	
 	}
 	
 	public void readerShop(int taille){
@@ -171,13 +176,15 @@ public class Reader extends BasicAbstractReader implements Protocol {
 			String nameP = readString();
 			String imageTMP = readString();
 			String imageP = "./res/"+imageTMP+".png";
+			long sizeP = readLong();
+			byte[] contentP = readBytes(sizeP);
+			FileHelper.writeContent(imageP, contentP);	
 			int duration = readInt();
 			long timeP = readLong();
 			boolean stackable = readBoolean();
 			int countP = readInt();
 			Product p = new Product(category,nameP,imageP,duration,stackable,countP,timeP);
-			//System.out.println(p.getCategory()+p.getName()+p.getImage()+p.getDuration());
-			//System.out.println(products.add(p));
+			System.out.println(p.getCategory()+p.getName()+p.getImage()+p.getDuration());
 			shop.add(p);
 			
 			
