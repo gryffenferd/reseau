@@ -104,4 +104,14 @@ public class Writer extends BasicAbstractWriter implements Protocol {
 		writeBoolean(true);
 	}
 
+	public void buy() {
+		writeInt(BUY);
+		writeBoolean(true);		
+	}
+	
+	public void sell() {
+		writeInt(SELL);
+		writeBoolean(true);		
+	}
+
 }

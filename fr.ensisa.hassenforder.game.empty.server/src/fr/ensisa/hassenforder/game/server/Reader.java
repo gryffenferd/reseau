@@ -11,6 +11,7 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	private String userPassword;
 	private Long userId;
 	private int amount;
+	private String productName;
 
 	public Reader(InputStream inputStream) {
 		super(inputStream);
@@ -51,9 +52,21 @@ public class Reader extends BasicAbstractReader implements Protocol {
 		case REFRESH:
 			nameId();
 			break;
+		case SELL:
+			shop();
+			break;
+		case BUY:
+			shop();
+			break;
 		default:
 			break;
 		}
+	}
+
+	private void shop() {
+		userName = readString();
+		userId = readLong();
+		productName = readString();		
 	}
 
 	private void cash() {
@@ -86,6 +99,10 @@ public class Reader extends BasicAbstractReader implements Protocol {
 
 	public int getAmount() {
 		return this.amount;
+	}
+
+	public String getProductName() {
+		return productName;
 	}
 
 }

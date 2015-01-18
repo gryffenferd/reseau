@@ -137,7 +137,21 @@ public class SessionServer implements Protocol {
 				else
 					writer.ko();
 				break;
+				
+			case BUY:
+				if(document.buyProduct(reader.getUserName(), reader.getUserId(), reader.getProductName()))
+					writer.buy();
+				else
+					writer.ko();
+				break;
 
+			case SELL:
+				if(document.sellProduct(reader.getUserName(), reader.getUserId(), reader.getProductName()))
+					writer.sell();
+				else
+					writer.ko();
+				break;
+				
 			case -1:
 				break;
 			default:
