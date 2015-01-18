@@ -83,13 +83,12 @@ public class SessionClient implements Protocol {	//Voir si le protocole est util
 		writerClient.writerStatisctics(name, id);
 		writerClient.send();
 		Reader readerClient = new Reader(connection.getInputStream());
-		readerClient.receive();
-		cash = readerClient.getCash();
-		filename = readerClient.getFilename();
-		System.out.println("syso de la fct"+filename);
-		content = readerClient.getContent();
-		image = getImage(filename);
-		//localImage = getImage("./res/race-4.png");		//Pour tester le getStatistics
+		readerClient.receive();		
+		cash = readerClient.getCash();		
+		filename = readerClient.getFilename();		
+		content = readerClient.getContent();		
+		image = "./res/"+filename+".png";
+		FileHelper.writeContent(image, content);		
 		Player player1 = new Player(name,image,cash);
 		return player1;	
 	}
@@ -139,9 +138,7 @@ public class SessionClient implements Protocol {	//Voir si le protocole est util
 		}
 	}
 
-	public String getImage (String filename) {
-		image = "./res/"+filename+".png";
-		FileHelper.writeContent(image, content);
-			return filename;
+	public String getImage (String image) {
+			return image;
 	}
 }
