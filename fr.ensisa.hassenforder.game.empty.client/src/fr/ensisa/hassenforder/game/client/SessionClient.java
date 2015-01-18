@@ -142,7 +142,6 @@ public class SessionClient implements Protocol {	//Voir si le protocole est util
 	public String getImage (String filename) {
 		image = "./res/"+filename+".png";
 		FileHelper.writeContent(image, content);
-		System.out.println(image);
 			return filename;
 	}
 }
