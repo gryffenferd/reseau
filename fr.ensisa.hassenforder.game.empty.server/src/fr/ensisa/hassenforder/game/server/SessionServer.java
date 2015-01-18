@@ -87,9 +87,12 @@ public class SessionServer implements Protocol {
 				Iterator<Product> itp = p.iterator() ;
 				 while (itp.hasNext()) {
 				    Product prod = itp.next();
+				    byte[] contentP = FileHelper.readContent("./res/" + prod.getImage()
+							+ ".png");
+					long sizeP = FileHelper.getFileSize("./res/" + prod.getImage() + ".png");
 				    writer.product(prod.getCategory().ordinal(), prod.getName(), prod.getImage(), prod.getDuration(), prod.getTime(), prod.isStackable(), prod.getCount());
-				    System.out.println(prod.getCategory().ordinal()+","+prod.getName()+"," +prod.getImage()+","+ prod.getDuration()+","+ prod.getTime()+","+ prod.isStackable()+","+ prod.getCount());
-				 }	   	
+				    System.out.println(prod.getCategory().ordinal()+","+prod.getName()+"," +prod.getImage()+","+ prod.getDuration()+","+ prod.getTime()+","+ prod.isStackable()+","+ prod.getCount());   
+				 }	 
 			break;				
 			
 			case CLEAR:
@@ -100,7 +103,7 @@ public class SessionServer implements Protocol {
 			break;
 			
 			case CONSUME:
-				if(document.consumeProducts(reader.getUserPassword(), reader.getUserId()))
+				if(document.consumeProducts(reader.getUserName(), reader.getUserId()))
 					writer.consume();
 				else
 					writer.ko();
