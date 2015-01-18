@@ -23,6 +23,8 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	private Collection<Product> prod = null;
 	private Collection<Product> shop = null;
 	private boolean clear;
+	private boolean consume;
+	private boolean refresh;
 
 	public Reader(InputStream inputStream) {
 		super (inputStream);
@@ -64,8 +66,14 @@ public class Reader extends BasicAbstractReader implements Protocol {
 		case CLEAR:
 			readerClear();
 			break;
-		default:
+		case CONSUME:
+			readerConsume();
+			break;
 			//System.out.println("default");
+		case REFRESH:
+			readerRefresh();
+			break;
+		default:
 			break;
 		}
 	}
@@ -185,6 +193,14 @@ public class Reader extends BasicAbstractReader implements Protocol {
 		clear = readBoolean();
 	}
 	
+	public void readerConsume(){
+		consume = readBoolean();
+	}
+	
+	public void readerRefresh(){
+		refresh = readBoolean();
+	}
+	
 	public long getUserID(){
 		return this.userID;
 	}
@@ -211,6 +227,14 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	
 	public boolean getClear(){
 		return this.clear;
+	}
+	
+	public boolean getConsume(){
+		return this.consume;
+	}
+	
+	public boolean getRefresh(){
+		return this.refresh;
 	}
 	
 	

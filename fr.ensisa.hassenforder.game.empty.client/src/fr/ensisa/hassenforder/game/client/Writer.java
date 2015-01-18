@@ -61,6 +61,18 @@ public class Writer extends BasicAbstractWriter implements Protocol {
 		writeInt(amount);
 	}
 	
+	public void writerConsume(String name, long id){
+		writeInt(CONSUME);
+		writeString(name);
+		writeLong(id);
+	}
+	
+	public void writerRefresh(String name, long id){
+		writeInt(REFRESH);
+		writeString(name);
+		writeLong(id);
+	}
+	
 
 	
 }

@@ -70,7 +70,7 @@ public class Application {
     	return network.clearProducts();
     }
 
-    public boolean doConsumeProducts() {
+    public boolean doConsumeProducts() throws IOException {
     	passThrough ("doConsumeProducts");
     	return network.consumeProducts();
     }
@@ -123,7 +123,7 @@ public class Application {
     	return network.getShop();
     }
 
-    public boolean doRefreshShop() {
+    public boolean doRefreshShop() throws IOException {
     	passThrough ("doRefreshShop");
     	return network.refreshShop();
     }

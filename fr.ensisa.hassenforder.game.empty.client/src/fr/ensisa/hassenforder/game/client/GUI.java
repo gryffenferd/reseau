@@ -206,7 +206,12 @@ public class GUI extends javax.swing.JFrame {
         jConsume.setText("consume");
         jConsume.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jConsumeMouseClicked(evt);
+                try {
+					jConsumeMouseClicked(evt);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
@@ -449,7 +454,12 @@ public class GUI extends javax.swing.JFrame {
         jRefresh.setText("refresh");
         jRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRefreshMouseClicked(evt);
+                try {
+					jRefreshMouseClicked(evt);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
@@ -908,7 +918,7 @@ public class GUI extends javax.swing.JFrame {
     	}
     }//GEN-LAST:event_jShopMouseClicked
 
-    private void jRefreshMouseClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRefreshMouseClicked
+    private void jRefreshMouseClicked(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_jRefreshMouseClicked
     	boolean r = app.doRefreshShop();
     	if (r) {
     		jStatus.setText("You successfully refresh the shop");
@@ -944,7 +954,7 @@ public class GUI extends javax.swing.JFrame {
     	}
     }//GEN-LAST:event_jClearMouseClicked
 
-    private void jConsumeMouseClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jConsumeMouseClicked
+    private void jConsumeMouseClicked(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_jConsumeMouseClicked
     	boolean r = app.doConsumeProducts();
     	if (r) {
     		jStatus.setText("You successfully consume products");

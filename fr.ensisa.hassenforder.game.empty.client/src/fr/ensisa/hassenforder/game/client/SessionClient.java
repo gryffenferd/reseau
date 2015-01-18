@@ -69,13 +69,13 @@ public class SessionClient implements Protocol {	//Voir si le protocole est util
 		return readerClient.getClear();
 	}
 
-	public boolean consumeProducts () {
-		try {
-			if (true) throw new IOException ("not yet implemented");
-			return true;
-		} catch (IOException e) {
-			return false;
-		}
+	public boolean consumeProducts () throws IOException {
+		Writer writerClient = new Writer(connection.getOutputStream());
+		writerClient.writerConsume(name, id);
+		writerClient.send();
+		Reader readerClient = new Reader(connection.getInputStream());
+		readerClient.receive();
+		return readerClient.getConsume();
 	}
 
 	public Player getStatistics () throws IOException {		//
@@ -113,13 +113,13 @@ public class SessionClient implements Protocol {	//Voir si le protocole est util
 		return products;
 	}
 
-	public boolean refreshShop () {
-		try {
-			if (true) throw new IOException ("not yet implemented");
-			return true;
-		} catch (IOException e) {
-			return false;
-		}
+	public boolean refreshShop () throws IOException {
+		Writer writerClient = new Writer(connection.getOutputStream());
+		writerClient.writerRefresh(name, id);
+		writerClient.send();
+		Reader readerClient = new Reader(connection.getInputStream());
+		readerClient.receive();
+		return readerClient.getRefresh();
 	}
 
 	public boolean buyProduct (String productName) {
