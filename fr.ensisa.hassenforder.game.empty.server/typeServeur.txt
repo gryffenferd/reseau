@@ -9,3 +9,7 @@ Type Writer :
 8.product -> int category,String name,String image, long size, byte[] content, int duration, long time, boolean stackable, int count
 9.clear -> boolean true
 10.consume -> boolean true
+11.shop -> int category,String name,String image, long size, byte[] content, int duration, long time, boolean stackable, int count
+12.refresh -> boolean true
+13.buy -> boolean true
+14.sell -> boolean true
