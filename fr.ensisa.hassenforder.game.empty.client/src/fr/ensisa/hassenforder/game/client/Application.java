@@ -113,7 +113,7 @@ public class Application {
     	return network.getStatistics();
     }
 
-    public Collection<Product> doGetProducts () {
+    public Collection<Product> doGetProducts () throws IOException {
     	passThrough ("doGetProducts");
     	return network.getProducts();
     }

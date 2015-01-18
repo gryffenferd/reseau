@@ -2,7 +2,10 @@ package fr.ensisa.hassenforder.game.client;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Collection;
 
+import fr.ensisa.hassenforder.game.model.Category;
+import fr.ensisa.hassenforder.game.model.Product;
 import fr.ensisa.hassenforder.network.BasicAbstractReader;
 import fr.ensisa.hassenforder.network.Protocol;
 
@@ -16,6 +19,7 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	private byte[] content;
 	private boolean add;
 	private int type=0;
+	private Collection<Product> prod = null;
 
 	public Reader(InputStream inputStream) {
 		super (inputStream);
@@ -90,6 +94,36 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	
 	public void readerProducts(){
 		int taille = readInt();
+		Collection<Product> prod;
+		readerProd(taille);	
+	}
+	
+	public void readerProd(int taille){
+	
+		for (int i = 0; i<=taille;i++){
+		
+		int category1 = readInt();
+		Category category = null;
+		switch(category1){
+		case 0:
+			category = Category.WEAPON;
+			break;
+		case 1:
+			category = Category.AMMO;
+			break;
+		case 2:
+			category = Category.FOOD;
+			break;
+		}
+		String nameP = readString();
+		String imageP = readString();
+		int duration = readInt();
+		long timeP = readLong();
+		boolean stackable = readBoolean();
+		int countP = readInt();
+		Product p = new Product(category,nameP,imageP,duration,stackable,countP,timeP);
+		prod.add(p);
+		}
 		
 	}
 	
@@ -111,6 +145,10 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	
 	public byte[] getContent(){
 		return this.content;
+	}
+	
+	public Collection<Product> getCollectionProducts(){
+		return prod;
 	}
 	
 	

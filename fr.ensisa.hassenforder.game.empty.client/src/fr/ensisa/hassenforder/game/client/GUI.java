@@ -222,7 +222,12 @@ public class GUI extends javax.swing.JFrame {
         jProducts.setText("products");
         jProducts.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jProductsMouseClicked(evt);
+                try {
+					jProductsMouseClicked(evt);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
@@ -855,7 +860,7 @@ public class GUI extends javax.swing.JFrame {
 		}
     }
 
-    private void jProductsMouseClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jProductsMouseClicked
+    private void jProductsMouseClicked(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_jProductsMouseClicked
     	Collection<Product> products = app.doGetProducts();
     	if (products != null) {
     		Iterator<Product> ip = products.iterator();

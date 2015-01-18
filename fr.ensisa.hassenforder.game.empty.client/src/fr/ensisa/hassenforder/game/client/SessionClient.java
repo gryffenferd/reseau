@@ -93,9 +93,14 @@ public class SessionClient implements Protocol {	//Voir si le protocole est util
 		return player1;	
 	}
 
-	public Collection<Product> getProducts() {
+	public Collection<Product> getProducts() throws IOException {
 		Writer writerClient = new Writer(connection.getOutputStream());
 		writerClient.writerProducts(name, id);
+		writerClient.send();
+		Reader readerClient = new Reader(connection.getInputStream());
+		readerClient.receive();
+		Collection<Product> products = readerClient.getCollectionProducts();
+		return products;
 	}
 
 	public Collection<Product> getShop () {
