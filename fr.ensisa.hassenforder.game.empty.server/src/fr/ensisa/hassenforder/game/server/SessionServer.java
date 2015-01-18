@@ -110,6 +110,7 @@ public class SessionServer implements Protocol {
 			
 			case SHOP:
 				Collection<Product> s;
+				System.out.println("nom: "+reader.getUserName()+"  id: "+ reader.getUserId());
 				s=document.getShop(reader.getUserName(), reader.getUserId());
 				int j = s.size();
 				writer.shopD(j);
