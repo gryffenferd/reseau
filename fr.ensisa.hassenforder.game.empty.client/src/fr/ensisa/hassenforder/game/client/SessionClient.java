@@ -109,8 +109,8 @@ public class SessionClient implements Protocol {	//Voir si le protocole est util
 		writerClient.send();
 		Reader readerClient = new Reader(connection.getInputStream());
 		readerClient.receive();
-		Collection<Product> products = readerClient.getCollectionProducts();
-		return products;
+		Collection<Product> shop = readerClient.getCollectionShop();
+		return shop;
 	}
 
 	public boolean refreshShop () throws IOException {

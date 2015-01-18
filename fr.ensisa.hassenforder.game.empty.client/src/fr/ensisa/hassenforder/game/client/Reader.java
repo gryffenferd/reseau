@@ -185,14 +185,13 @@ public class Reader extends BasicAbstractReader implements Protocol {
 			int countP = readInt();
 			Product p = new Product(category,nameP,imageP,duration,stackable,countP,timeP);
 			System.out.println(p.getCategory()+p.getName()+p.getImage()+p.getDuration());
-			shop.add(p);
+			shoptmp.add(p);
 			
 			
 			System.out.println(shoptmp);
 		}
 		shop = shoptmp;
 		//System.out.println("ici"+shop);
-		
 	}
 	
 	public void readerClear(){
@@ -229,6 +228,10 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	
 	public Collection<Product> getCollectionProducts(){
 		return this.prod;
+	}
+	
+	public Collection<Product> getCollectionShop(){
+		return this.shop;
 	}
 	
 	public boolean getClear(){
