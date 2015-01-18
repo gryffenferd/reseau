@@ -54,9 +54,8 @@ public class SessionClient implements Protocol {	//Voir si le protocole est util
 		writerClient.writerAdd(name, id,amount);
 		writerClient.send();
 		Reader readerClient = new Reader(connection.getInputStream());
-		cash = readerClient.getCash();
 		readerClient.receive();
-		return !readerClient.getAdd();
+		return readerClient.getAdd();
 	}
 
 	public boolean clearProducts () {
@@ -78,12 +77,6 @@ public class SessionClient implements Protocol {	//Voir si le protocole est util
 	}
 
 	public Player getStatistics () throws IOException {		//
-//		try {
-//			if (true) throw new IOException ("not yet implemented");
-//			return null;
-//		} catch (IOException e) {
-//			return null;
-//		}
 		Writer writerClient = new Writer(connection.getOutputStream());
 		writerClient.writerStatisctics(name, id);
 		writerClient.send();
@@ -91,7 +84,6 @@ public class SessionClient implements Protocol {	//Voir si le protocole est util
 		readerClient.receive();
 		cash = readerClient.getCash();
 		localImage = getImage("./res/race-4.png");
-		
 		Player player1 = new Player(name,localImage,cash);
 		return player1;
 		
@@ -143,6 +135,7 @@ public class SessionClient implements Protocol {	//Voir si le protocole est util
 	}
 
 	public String getImage (String imageName) {
+		
 			return imageName;
 	}
 }

@@ -22,28 +22,36 @@ public class Reader extends BasicAbstractReader implements Protocol {
 
 	public void receive() {
 		type = readInt ();
+		System.out.println("type:"+type);
 		switch (type) {
 		case 0:						//Si 0, risque de valoir la valeur d'une var non initialisée
 			break;
 		case CONNECTION: 					//connect si marche (réponse du serveur = ok)
 			readerConnect();
+			System.out.println("connection");
 			break;
 		case CONNECTION_FAILED:
 			readerConnectFailed();	//connect si ne marche pas (réponse du serveur = ko)
+			System.out.println("failed connexion");
 			break;
 		case DISCONNECTION:						//disconnect ok
+			System.out.println("deconnexion");
 			readerDisconnect();
 			break;
 		case FAILED:
 			readerDisconnect();		//disconnect ko
+			System.out.println("KO");
 			break;
 		case STATISTICS_OK:			//Cas où getStatistics est ok
 			readerStatistics();
+			System.out.println("stats");
 			break;
 		case ADD:
 			readerAdd();
+			System.out.println("add");
 			break;
 		default:
+			System.out.println("default");
 			break;
 		}
 	}
@@ -72,13 +80,11 @@ public class Reader extends BasicAbstractReader implements Protocol {
 		add = readBoolean();
 	}
 	
-	
 	public void readerStatistics(){	//Take cash + image
 		cash = readInt();
 		length = readLong();
 		filename = readString();
-		content = readBytes((int)length);
-		
+		content = readBytes(length);	
 	}
 	
 	public long getUserID(){
