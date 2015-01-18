@@ -2,6 +2,7 @@ package fr.ensisa.hassenforder.game.client;
 
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import fr.ensisa.hassenforder.game.model.Category;
@@ -106,8 +107,9 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	}
 	
 	public void readerProd(int taille){
-		for (int i = 0; i<=taille;i++){
-		
+		ArrayList<Product> products = new ArrayList<Product>();
+		for (int i = 0; i<taille;i++){
+			
 			int category1 = readInt();
 			Category category = null;
 			switch(category1){
@@ -131,11 +133,13 @@ public class Reader extends BasicAbstractReader implements Protocol {
 			Product p = new Product(category,nameP,imageP,duration,stackable,countP,timeP);
 			System.out.println(p.getCategory()+p.getName()+p.getImage()+p.getDuration());
 			//System.out.println(products.add(p));
-			//Collection<Product> products
-			System.out.println(prod);
-			prod.add(p);
-			System.out.println(prod);
+			products.add(p);
+			
+			
+			System.out.println(products);
 		}
+		prod = products;
+		System.out.println("ici"+prod);
 		
 	}
 	
