@@ -47,7 +47,7 @@ public class SessionServer implements Protocol {
 					writer.okDisconnect();
 				else
 					writer.ko();
-				break;
+			break;
 
 			case STATISTICS_OK:
 				Account account = document.getStatistics(reader.getUserName(),
@@ -61,13 +61,13 @@ public class SessionServer implements Protocol {
 				System.out.println("race: " + race);
 				System.out.println("size: " + size);
 				writer.statistics(cash, size, race, content);
-				break;
+			break;
 
 			case ADD:
 				if (document.addCash(
 						reader.getUserName(),
 						reader.getUserId(),reader.getAmount())) {
-					writer.cash();
+					writer.add();
 				} else
 					writer.ko();
 			break;
@@ -77,7 +77,7 @@ public class SessionServer implements Protocol {
 						reader.getUserName(),
 						reader.getUserId(),
 						- reader.getAmount())) {
-					writer.cash();
+					writer.sub();
 				} else
 					writer.ko();
 			break;
@@ -85,7 +85,7 @@ public class SessionServer implements Protocol {
 			case PRODUCT:
 				Collection<Product> p;
 				p=document.getProducts(reader.getUserPassword(), reader.getUserId());
-				writer.prooductD();
+				writer.productD();
 				Iterator<Product> itp = p.iterator() ;
 				 while (itp.hasNext()) {
 				    Product prod = itp.next();
@@ -123,7 +123,7 @@ public class SessionServer implements Protocol {
 				return false; // connection jammed
 
 			}
-			writer.send();
+			writer.send();			
 			return true;
 		} catch (IOException e) {
 			return false;

@@ -46,12 +46,7 @@ public class Writer extends BasicAbstractWriter implements Protocol {
 		writeBytes(content);
 	}
 
-	public void cash() {
-		writeInt(ADD);
-		writeBoolean(true);		
-	}
-
-	public void prooductD(){
+	public void productD(){
 		writeInt(PRODUCT);
 	}
 	
@@ -89,6 +84,15 @@ public class Writer extends BasicAbstractWriter implements Protocol {
 		writeBoolean(stackable);
 		writeInt(count);
 	}
-		
+
+	public void sub() {
+		writeInt(SUB);
+		writeBoolean(true);	
+	}
+
+	public void add() {
+		writeInt(ADD);
+		writeBoolean(true);	
+	}
 			
 }

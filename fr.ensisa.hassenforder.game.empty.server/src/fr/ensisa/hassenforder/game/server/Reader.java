@@ -87,5 +87,5 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	public int getAmount(){
 		return this.amount;
 	}
-	
+
 }
