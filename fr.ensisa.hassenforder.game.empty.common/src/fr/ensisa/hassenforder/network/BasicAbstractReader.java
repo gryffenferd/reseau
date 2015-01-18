@@ -57,8 +57,9 @@ public class BasicAbstractReader {
 
 	protected byte[] readBytes(long length){
 		try{
+			int l;
 			byte[] input = new byte[(int) length]; 
-			for(int l=0; l<=length ; l++)
+			for(l=0; l<length ; l++)
 			{
 				while(inputStream.available()<0)
 					input[l]=inputStream.readByte();
