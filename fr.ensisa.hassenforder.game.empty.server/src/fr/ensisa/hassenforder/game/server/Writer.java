@@ -51,10 +51,12 @@ public class Writer extends BasicAbstractWriter implements Protocol {
 		writeInt(size);
 	}
 	
-	public void product(int category, String name, String image, int duration, long time, boolean stackable, int count){
+	public void product(int category, String name, String image, long size, byte[] content, int duration, long time, boolean stackable, int count){
 		writeInt(category);
 		writeString(name);
 		writeString(image);
+		writeLong(size);
+		writeBytes(content);
 		writeInt(duration);
 		writeLong(time);
 		writeBoolean(stackable);

@@ -90,8 +90,7 @@ public class SessionServer implements Protocol {
 				    byte[] contentP = FileHelper.readContent("./res/" + prod.getImage()
 							+ ".png");
 					long sizeP = FileHelper.getFileSize("./res/" + prod.getImage() + ".png");
-				    writer.product(prod.getCategory().ordinal(), prod.getName(), prod.getImage(), prod.getDuration(), prod.getTime(), prod.isStackable(), prod.getCount());
-				    System.out.println(prod.getCategory().ordinal()+","+prod.getName()+"," +prod.getImage()+","+ prod.getDuration()+","+ prod.getTime()+","+ prod.isStackable()+","+ prod.getCount());   
+				    writer.product(prod.getCategory().ordinal(), prod.getName(), prod.getImage(), sizeP,contentP, prod.getDuration(), prod.getTime(), prod.isStackable(), prod.getCount());   
 				 }	 
 			break;				
 			
@@ -118,12 +117,11 @@ public class SessionServer implements Protocol {
 				 while (its.hasNext()) {
 				    Product prod = its.next();
 				    writer.shop(prod.getCategory().ordinal(), prod.getName(), prod.getImage(), prod.getDuration(), prod.getTime(), prod.isStackable(), prod.getCount());
-				   
 				 }	
 			break;
 			
 			case REFRESH:
-				if(document.refreshShop(reader.getUserPassword(), reader.getUserId()))
+				if(document.refreshShop(reader.getUserName(), reader.getUserId()))
 					writer.refresh();
 				else
 					writer.ko();
