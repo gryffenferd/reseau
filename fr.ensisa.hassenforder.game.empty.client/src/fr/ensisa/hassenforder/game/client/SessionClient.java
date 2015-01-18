@@ -60,13 +60,13 @@ public class SessionClient implements Protocol {	//Voir si le protocole est util
 		return readerClient.getAdd();
 	}
 
-	public boolean clearProducts () {
-		try {
-			if (true) throw new IOException ("not yet implemented");
-			return true;
-		} catch (IOException e) {
-			return false;
-		}
+	public boolean clearProducts () throws IOException {
+		Writer writerClient = new Writer(connection.getOutputStream());
+		writerClient.writerClear(name, id);
+		writerClient.send();
+		Reader readerClient = new Reader(connection.getInputStream());
+		readerClient.receive();
+		return readerClient.getClear();
 	}
 
 	public boolean consumeProducts () {

@@ -20,6 +20,7 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	private boolean add;
 	private int type=0;
 	private Collection<Product> prod = null;
+	private boolean clear;
 
 	public Reader(InputStream inputStream) {
 		super (inputStream);
@@ -54,6 +55,12 @@ public class Reader extends BasicAbstractReader implements Protocol {
 		case ADD:
 			readerAdd();
 			//System.out.println("add");
+			break;
+		case PRODUCT:
+			readerProducts();
+			break;
+		case CLEAR:
+			readerClear();
 			break;
 		default:
 			//System.out.println("default");
@@ -94,37 +101,42 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	
 	public void readerProducts(){
 		int taille = readInt();
-		Collection<Product> prod;
 		readerProd(taille);	
 	}
 	
 	public void readerProd(int taille){
-	
+		
 		for (int i = 0; i<=taille;i++){
 		
-		int category1 = readInt();
-		Category category = null;
-		switch(category1){
-		case 0:
-			category = Category.WEAPON;
-			break;
-		case 1:
-			category = Category.AMMO;
-			break;
-		case 2:
-			category = Category.FOOD;
-			break;
-		}
-		String nameP = readString();
-		String imageP = readString();
-		int duration = readInt();
-		long timeP = readLong();
-		boolean stackable = readBoolean();
-		int countP = readInt();
-		Product p = new Product(category,nameP,imageP,duration,stackable,countP,timeP);
-		prod.add(p);
+			int category1 = readInt();
+			Category category = null;
+			switch(category1){
+			case 0:
+				category = Category.WEAPON;
+				break;
+			case 1:
+				category = Category.AMMO;
+				break;
+			case 2:
+				category = Category.FOOD;
+				break;
+			}
+			String nameP = readString();
+			String imageTMP = readString();
+			String imageP = "./res/"+imageTMP+".png";
+			int duration = readInt();
+			long timeP = readLong();
+			boolean stackable = readBoolean();
+			int countP = readInt();
+			Product p = new Product(category,nameP,imageP,duration,stackable,countP,timeP);
+			System.out.println(p.getCategory()+p.getName()+p.getImage()+p.getDuration());
+			prod.add(p);
 		}
 		
+	}
+	
+	public void readerClear(){
+		clear = readBoolean();
 	}
 	
 	public long getUserID(){
@@ -149,6 +161,10 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	
 	public Collection<Product> getCollectionProducts(){
 		return prod;
+	}
+	
+	public boolean getClear(){
+		return this.clear;
 	}
 	
 	

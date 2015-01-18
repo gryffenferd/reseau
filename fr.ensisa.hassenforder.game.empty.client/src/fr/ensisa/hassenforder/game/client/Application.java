@@ -65,7 +65,7 @@ public class Application {
     	return network.addCash(-amount);
     }
 
-    public boolean doClearProducts() {
+    public boolean doClearProducts() throws IOException {
     	passThrough ("doClearProducts");
     	return network.clearProducts();
     }

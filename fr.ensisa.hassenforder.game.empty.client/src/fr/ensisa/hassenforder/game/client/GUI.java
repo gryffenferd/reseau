@@ -194,7 +194,12 @@ public class GUI extends javax.swing.JFrame {
         jClear.setText("clear");
         jClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jClearMouseClicked(evt);
+                try {
+					jClearMouseClicked(evt);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
@@ -925,7 +930,7 @@ public class GUI extends javax.swing.JFrame {
     	}
     }//GEN-LAST:event_jSubCashMouseClicked
   //NEW THROWS EXCPETION
-    private void jClearMouseClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jClearMouseClicked
+    private void jClearMouseClicked(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_jClearMouseClicked
     	boolean r = app.doClearProducts();
     	if (r) {
     		jStatus.setText("You successfully remove all products");
