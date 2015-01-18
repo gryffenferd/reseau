@@ -94,5 +94,10 @@ public class Writer extends BasicAbstractWriter implements Protocol {
 		writeInt(ADD);
 		writeBoolean(true);	
 	}
+
+	public void refresh() {
+		writeInt(REFRESH);
+		writeBoolean(true);		
+	}
 			
 }

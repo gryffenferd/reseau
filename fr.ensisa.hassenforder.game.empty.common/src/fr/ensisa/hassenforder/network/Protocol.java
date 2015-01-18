@@ -17,5 +17,6 @@ public interface Protocol {
 	public static final int CLEAR = 9;
 	public static final int CONSUME = 10;
 	public static final int SHOP = 11;
+	public static final int REFRESH=12;
 	
 }

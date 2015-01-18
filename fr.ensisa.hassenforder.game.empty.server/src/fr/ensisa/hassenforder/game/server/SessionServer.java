@@ -117,6 +117,13 @@ public class SessionServer implements Protocol {
 				    writer.shop(prod.getCategory().ordinal(), prod.getName(), prod.getImage(), prod.getDuration(), prod.getTime(), prod.isStackable(), prod.getCount());
 				 }	
 			break;
+			
+			case REFRESH:
+				if(document.refreshShop(reader.getUserPassword(), reader.getUserId()))
+					writer.refresh();
+				else
+					writer.ko();
+			break;
 			case -1:
 				break;
 			default:
