@@ -57,9 +57,6 @@ public class SessionServer implements Protocol {
 				byte[] content = FileHelper.readContent("./res/" + race
 						+ ".png");
 				long size = FileHelper.getFileSize("./res/" + race + ".png");
-				System.out.println("cash stat: " + cash);
-				System.out.println("race: " + race);
-				System.out.println("size: " + size);
 				writer.statistics(cash, size, race, content);
 			break;
 
@@ -84,8 +81,8 @@ public class SessionServer implements Protocol {
 			
 			case PRODUCT:
 				Collection<Product> p;
-				p=document.getProducts(reader.getUserPassword(), reader.getUserId());
-				int i=p.size();
+				p=document.getProducts(reader.getUserName(), reader.getUserId());
+				int i = p.size();
 				writer.productD(i);				
 				Iterator<Product> itp = p.iterator() ;
 				 while (itp.hasNext()) {
@@ -111,8 +108,9 @@ public class SessionServer implements Protocol {
 			
 			case SHOP:
 				Collection<Product> s;
-				s=document.getShop(reader.getUserPassword(), reader.getUserId());
-				writer.shopD();
+				s=document.getShop(reader.getUserName(), reader.getUserId());
+				int j = s.size();
+				writer.shopD(j);
 				Iterator<Product> its = s.iterator() ;
 				 while (its.hasNext()) {
 				    Product prod = its.next();
