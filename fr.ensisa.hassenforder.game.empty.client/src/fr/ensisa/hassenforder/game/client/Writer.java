@@ -2,6 +2,7 @@ package fr.ensisa.hassenforder.game.client;
 
 import java.io.OutputStream;
 
+import fr.ensisa.hassenforder.game.model.Product;
 import fr.ensisa.hassenforder.network.BasicAbstractWriter;
 import fr.ensisa.hassenforder.network.Protocol;
 
@@ -72,6 +73,19 @@ public class Writer extends BasicAbstractWriter implements Protocol {
 		writeLong(id);
 	}
 	
-
+	public void writerBuy(String name, long id, String productName){
+		writeInt(BUY);
+		writeString(name);
+		writeLong(id);
+		writeString(productName);
+	}
+	
+	public void writerSell(String name, long id, String productName){
+		writeInt(SELL);
+		writeString(name);
+		writeLong(id);
+		writeString(productName);
+	}
+	
 	
 }

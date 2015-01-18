@@ -128,12 +128,12 @@ public class Application {
     	return network.refreshShop();
     }
 
-    public boolean doBuyProduct (String productName) {
+    public boolean doBuyProduct (String productName) throws IOException {
     	passThrough ("doBuyProduct");
     	return network.buyProduct (productName);
     }
 
-    public boolean doSellProduct (String productName) {
+    public boolean doSellProduct (String productName) throws IOException {
     	passThrough ("doSellProduct");
     	return network.sellProduct (productName);
     }

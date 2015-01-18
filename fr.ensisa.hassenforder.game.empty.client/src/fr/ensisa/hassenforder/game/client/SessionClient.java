@@ -122,22 +122,22 @@ public class SessionClient implements Protocol {	//Voir si le protocole est util
 		return readerClient.getRefresh();
 	}
 
-	public boolean buyProduct (String productName) {
-		try {
-			if (true) throw new IOException ("not yet implemented");
-			return true;
-		} catch (IOException e) {
-			return false;
-		}
+	public boolean buyProduct (String productName) throws IOException {
+		Writer writerClient = new Writer(connection.getOutputStream());
+		writerClient.writerBuy(name,id,productName);
+		writerClient.send();
+		Reader readerClient = new Reader(connection.getInputStream());
+		readerClient.receive();
+		return readerClient.getBuy();
 	}
 
-	public boolean sellProduct (String productName) {
-		try {
-			if (true) throw new IOException ("not yet implemented");
-			return true;
-		} catch (IOException e) {
-			return false;
-		}
+	public boolean sellProduct (String productName) throws IOException {
+		Writer writerClient = new Writer(connection.getOutputStream());
+		writerClient.writerSell(name,id,productName);
+		writerClient.send();
+		Reader readerClient = new Reader(connection.getInputStream());
+		readerClient.receive();
+		return readerClient.getSell();
 	}
 
 	public String getImage (String image) {

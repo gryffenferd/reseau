@@ -25,6 +25,8 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	private boolean clear;
 	private boolean consume;
 	private boolean refresh;
+	private boolean buy;
+	private boolean sell;
 
 	public Reader(InputStream inputStream) {
 		super (inputStream);
@@ -75,7 +77,12 @@ public class Reader extends BasicAbstractReader implements Protocol {
 		case REFRESH:
 			readerRefresh();
 			break;
-
+		case BUY:
+			readerBuy();
+			break;
+		case SELL:
+			readerSell();
+			break;
 		default:
 			break;
 		}
@@ -206,6 +213,14 @@ public class Reader extends BasicAbstractReader implements Protocol {
 		refresh = readBoolean();
 	}
 	
+	public void readerBuy(){
+		buy = readBoolean();
+	}
+	
+	public void readerSell(){
+		sell = readBoolean();
+	}
+	
 	public long getUserID(){
 		return this.userID;
 	}
@@ -246,5 +261,12 @@ public class Reader extends BasicAbstractReader implements Protocol {
 		return this.refresh;
 	}
 	
+	public boolean getBuy(){
+		return this.buy;
+	}
+	
+	public boolean getSell(){
+		return this.sell;
+	}
 	
 }

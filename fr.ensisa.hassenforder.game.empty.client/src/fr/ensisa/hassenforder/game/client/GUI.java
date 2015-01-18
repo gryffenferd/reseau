@@ -257,7 +257,12 @@ public class GUI extends javax.swing.JFrame {
         jImageItem1.setBorderPainted(false);
         jImageItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jImageItem1MouseClicked(evt);
+                try {
+					jImageItem1MouseClicked(evt);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
@@ -313,7 +318,12 @@ public class GUI extends javax.swing.JFrame {
         jImageItem2.setBorderPainted(false);
         jImageItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jImageItem2MouseClicked(evt);
+                try {
+					jImageItem2MouseClicked(evt);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
@@ -369,7 +379,12 @@ public class GUI extends javax.swing.JFrame {
         jImageItem3.setBorderPainted(false);
         jImageItem3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jImageItem3MouseClicked(evt);
+                try {
+					jImageItem3MouseClicked(evt);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
@@ -479,7 +494,12 @@ public class GUI extends javax.swing.JFrame {
         jImageShop1.setBorderPainted(false);
         jImageShop1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jImageShop1MouseClicked(evt);
+                try {
+					jImageShop1MouseClicked(evt);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
@@ -535,7 +555,12 @@ public class GUI extends javax.swing.JFrame {
         jImageShop2.setBorderPainted(false);
         jImageShop2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jImageShop2MouseClicked(evt);
+                try {
+					jImageShop2MouseClicked(evt);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
@@ -591,7 +616,12 @@ public class GUI extends javax.swing.JFrame {
         jImageShop3.setBorderPainted(false);
         jImageShop3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jImageShop3MouseClicked(evt);
+                try {
+					jImageShop3MouseClicked(evt);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
 
@@ -778,7 +808,7 @@ public class GUI extends javax.swing.JFrame {
     	}
     }//GEN-LAST:event_jDisconnectMouseClicked
 
-    private void jImageItem1MouseClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jImageItem1MouseClicked
+    private void jImageItem1MouseClicked(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_jImageItem1MouseClicked
     	String productName = jNameItem1.getText();
     	boolean r = app.doSellProduct(productName);
     	if (r) {
@@ -788,7 +818,7 @@ public class GUI extends javax.swing.JFrame {
     	}
     }//GEN-LAST:event_jImageItem1MouseClicked
 
-    private void jImageItem2MouseClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jImageItem2MouseClicked
+    private void jImageItem2MouseClicked(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_jImageItem2MouseClicked
     	String productName = jNameItem2.getText();
     	boolean r = app.doSellProduct(productName);
     	if (r) {
@@ -798,7 +828,7 @@ public class GUI extends javax.swing.JFrame {
     	}
     }//GEN-LAST:event_jImageItem2MouseClicked
 
-    private void jImageItem3MouseClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jImageItem3MouseClicked
+    private void jImageItem3MouseClicked(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_jImageItem3MouseClicked
     	String productName = jNameItem3.getText();
     	boolean r = app.doSellProduct(productName);
     	if (r) {
@@ -808,7 +838,7 @@ public class GUI extends javax.swing.JFrame {
     	}
     }//GEN-LAST:event_jImageItem3MouseClicked
 
-    private void jImageShop1MouseClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jImageShop1MouseClicked
+    private void jImageShop1MouseClicked(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_jImageShop1MouseClicked
     	String productName = jNameShop1.getText();
     	boolean r = app.doBuyProduct(productName);
     	if (r) {
@@ -818,7 +848,7 @@ public class GUI extends javax.swing.JFrame {
     	}
     }//GEN-LAST:event_jImageShop1MouseClicked
 
-    private void jImageShop2MouseClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jImageShop2MouseClicked
+    private void jImageShop2MouseClicked(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_jImageShop2MouseClicked
     	String productName = jNameShop2.getText();
     	boolean r = app.doBuyProduct(productName);
     	if (r) {
@@ -828,7 +858,7 @@ public class GUI extends javax.swing.JFrame {
     	}
     }//GEN-LAST:event_jImageShop2MouseClicked
 
-    private void jImageShop3MouseClicked(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jImageShop3MouseClicked
+    private void jImageShop3MouseClicked(java.awt.event.ActionEvent evt) throws IOException {//GEN-FIRST:event_jImageShop3MouseClicked
     	String productName = jNameShop3.getText();
     	boolean r = app.doBuyProduct(productName);
     	if (r) {
