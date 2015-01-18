@@ -110,14 +110,16 @@ public class SessionServer implements Protocol {
 			
 			case SHOP:
 				Collection<Product> s;
-				System.out.println("nom: "+reader.getUserName()+"  id: "+ reader.getUserId());
 				s=document.getShop(reader.getUserName(), reader.getUserId());
 				int j = s.size();
 				writer.shopD(j);
 				Iterator<Product> its = s.iterator() ;
 				 while (its.hasNext()) {
 				    Product prod = its.next();
-				    writer.shop(prod.getCategory().ordinal(), prod.getName(), prod.getImage(), prod.getDuration(), prod.getTime(), prod.isStackable(), prod.getCount());
+				    byte[] contentS = FileHelper.readContent("./res/" + prod.getImage()
+							+ ".png");
+					long sizeS = FileHelper.getFileSize("./res/" + prod.getImage() + ".png");
+				    writer.shop(prod.getCategory().ordinal(), prod.getName(), prod.getImage(),sizeS,contentS, prod.getDuration(), prod.getTime(), prod.isStackable(), prod.getCount());
 				 }	
 			break;
 			
