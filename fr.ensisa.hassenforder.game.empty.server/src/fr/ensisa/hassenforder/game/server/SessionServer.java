@@ -6,7 +6,6 @@ import java.util.Collection;
 import java.util.Iterator;
 
 import fr.ensisa.hassenforder.game.model.Account;
-import fr.ensisa.hassenforder.game.model.Category;
 import fr.ensisa.hassenforder.game.model.Product;
 import fr.ensisa.hassenforder.game.model.User;
 import fr.ensisa.hassenforder.network.FileHelper;
@@ -47,7 +46,7 @@ public class SessionServer implements Protocol {
 					writer.okDisconnect();
 				else
 					writer.ko();
-			break;
+				break;
 
 			case STATISTICS_OK:
 				Account account = document.getStatistics(reader.getUserName(),
@@ -58,84 +57,93 @@ public class SessionServer implements Protocol {
 						+ ".png");
 				long size = FileHelper.getFileSize("./res/" + race + ".png");
 				writer.statistics(cash, size, race, content);
-			break;
+				break;
 
 			case ADD:
-				if (document.addCash(
-						reader.getUserName(),
-						reader.getUserId(),reader.getAmount())) {
+				if (document.addCash(reader.getUserName(), reader.getUserId(),
+						reader.getAmount())) {
 					writer.add();
 				} else
 					writer.ko();
-			break;
+				break;
 
 			case SUB:
-				if (document.addCash(
-						reader.getUserName(),
-						reader.getUserId(),
-						- reader.getAmount())) {
+				if (document.addCash(reader.getUserName(), reader.getUserId(),
+						-reader.getAmount())) {
 					writer.sub();
 				} else
 					writer.ko();
-			break;
-			
+				break;
+
 			case PRODUCT:
 				Collection<Product> p;
-				p=document.getProducts(reader.getUserName(), reader.getUserId());
+				p = document.getProducts(reader.getUserName(),
+						reader.getUserId());
 				int i = p.size();
-				writer.productD(i);				
-				Iterator<Product> itp = p.iterator() ;
-				 while (itp.hasNext()) {
-				    Product prod = itp.next();
-				    byte[] contentP = FileHelper.readContent("./res/" + prod.getImage()
-							+ ".png");
-					long sizeP = FileHelper.getFileSize("./res/" + prod.getImage() + ".png");
-				    writer.product(prod.getCategory().ordinal(), prod.getName(), prod.getImage(), sizeP,contentP, prod.getDuration(), prod.getTime(), prod.isStackable(), prod.getCount());   
-				 }	 
-			break;				
-			
+				writer.productD(i);
+				Iterator<Product> itp = p.iterator();
+				while (itp.hasNext()) {
+					Product prod = itp.next();
+					byte[] contentP = FileHelper.readContent("./res/"
+							+ prod.getImage() + ".png");
+					long sizeP = FileHelper.getFileSize("./res/"
+							+ prod.getImage() + ".png");
+					writer.product(prod.getCategory().ordinal(),
+							prod.getName(), prod.getImage(), sizeP, contentP,
+							prod.getDuration(), prod.getTime(),
+							prod.isStackable(), prod.getCount());
+				}
+				break;
+
 			case CLEAR:
-				if(document.clearProducts(reader.getUserName(), reader.getUserId()))
+				if (document.clearProducts(reader.getUserName(),
+						reader.getUserId()))
 					writer.clear();
 				else
 					writer.ko();
-			break;
-			
+				break;
+
 			case CONSUME:
-				if(document.consumeProducts(reader.getUserName(), reader.getUserId()))
+				if (document.consumeProducts(reader.getUserName(),
+						reader.getUserId()))
 					writer.consume();
 				else
 					writer.ko();
-			break;
-			
+				break;
+
 			case SHOP:
 				Collection<Product> s;
-				s=document.getShop(reader.getUserName(), reader.getUserId());
+				s = document.getShop(reader.getUserName(), reader.getUserId());
 				int j = s.size();
 				writer.shopD(j);
-				Iterator<Product> its = s.iterator() ;
-				 while (its.hasNext()) {
-				    Product prod = its.next();
-				    byte[] contentS = FileHelper.readContent("./res/" + prod.getImage()
-							+ ".png");
-					long sizeS = FileHelper.getFileSize("./res/" + prod.getImage() + ".png");
-				    writer.shop(prod.getCategory().ordinal(), prod.getName(), prod.getImage(),sizeS,contentS, prod.getDuration(), prod.getTime(), prod.isStackable(), prod.getCount());
-				 }	
-			break;
-			
+				Iterator<Product> its = s.iterator();
+				while (its.hasNext()) {
+					Product prod = its.next();
+					byte[] contentS = FileHelper.readContent("./res/"
+							+ prod.getImage() + ".png");
+					long sizeS = FileHelper.getFileSize("./res/"
+							+ prod.getImage() + ".png");
+					writer.shop(prod.getCategory().ordinal(), prod.getName(),
+							prod.getImage(), sizeS, contentS,
+							prod.getDuration(), prod.getTime(),
+							prod.isStackable(), prod.getCount());
+				}
+				break;
+
 			case REFRESH:
-				if(document.refreshShop(reader.getUserName(), reader.getUserId()))
+				if (document.refreshShop(reader.getUserName(),
+						reader.getUserId()))
 					writer.refresh();
 				else
 					writer.ko();
-			break;
-			
+				break;
+
 			case -1:
 				break;
 			default:
 				return false; // connection jammed
 			}
-			writer.send();			
+			writer.send();
 			return true;
 		} catch (IOException e) {
 			return false;

@@ -7,7 +7,6 @@ import fr.ensisa.hassenforder.network.Protocol;
 
 public class Writer extends BasicAbstractWriter implements Protocol {
 	private long userID;
-//	private String username;
 
 	public Writer(OutputStream outputStream) {
 		super (outputStream);

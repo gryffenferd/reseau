@@ -1,9 +1,7 @@
 package fr.ensisa.hassenforder.game.server;
 
-
 import java.io.InputStream;
 
-import fr.ensisa.hassenforder.game.model.Product;
 import fr.ensisa.hassenforder.network.BasicAbstractReader;
 import fr.ensisa.hassenforder.network.Protocol;
 
@@ -13,85 +11,80 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	private String userPassword;
 	private Long userId;
 	private int amount;
-	
+
 	public Reader(InputStream inputStream) {
-		super (inputStream);
+		super(inputStream);
 	}
 
 	public void receive() {
-		type = readInt ();
+		type = readInt();
 		switch (type) {
-		case 0 :
-		break;
+		case 0:
+			break;
 		case CONNECTION:
 			connect();
-		break;
+			break;
 		case DISCONNECTION:
-			disconnect();
-		break;
+			nameId();
+			break;
 		case STATISTICS_OK:
-			statistics();			
-		break;
+			nameId();
+			break;
 		case ADD:
 			cash();
-		break;
+			break;
 		case SUB:
 			cash();
-		break;
+			break;
 		case PRODUCT:
-			statistics();
-		break;
+			nameId();
+			break;
 		case SHOP:
-			statistics();
-		break;
+			nameId();
+			break;
 		case CLEAR:
-			statistics();
-		break;
+			nameId();
+			break;
 		case CONSUME:
-			statistics();
-		break;
+			nameId();
+			break;
 		case REFRESH:
-			statistics();
-		break;
+			nameId();
+			break;
 		default:
 			break;
 		}
 	}
-	
+
 	private void cash() {
-		userName=readString();
-		userId=readLong();
-		amount=readInt();
-	}
-
-	private void statistics() {
-		userName=readString();
-		userId=readLong();
-	}
-
-	public void connect(){	
 		userName = readString();
-		userPassword = readString();
+		userId = readLong();
+		amount = readInt();
 	}
-	
-	public void disconnect(){
+
+	private void nameId() {
 		userName = readString();
 		userId = readLong();
 	}
-	
-	public String getUserName(){
+
+	public void connect() {
+		userName = readString();
+		userPassword = readString();
+	}
+
+	public String getUserName() {
 		return this.userName;
 	}
-	
-	public String getUserPassword(){
+
+	public String getUserPassword() {
 		return this.userPassword;
 	}
-	
-	public Long getUserId(){
+
+	public Long getUserId() {
 		return this.userId;
 	}
-	
-	public int getAmount(){
+
+	public int getAmount() {
 		return this.amount;
 	}
 
