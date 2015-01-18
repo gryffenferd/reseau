@@ -48,6 +48,12 @@ public class Writer extends BasicAbstractWriter implements Protocol {
 		writeLong(id);
 	}
 	
+	public void writerShop(String name, long id){
+		writeInt(SHOP);
+		writeString(name);
+		writeLong(id);
+	}
+	
 	public void writerAdd(String name, long id,int amount){
 		writeInt(ADD);
 		writeString(name);

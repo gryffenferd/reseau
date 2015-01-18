@@ -21,6 +21,7 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	private boolean add;
 	private int type=0;
 	private Collection<Product> prod = null;
+	private Collection<Product> shop = null;
 	private boolean clear;
 
 	public Reader(InputStream inputStream) {
@@ -140,6 +141,43 @@ public class Reader extends BasicAbstractReader implements Protocol {
 		}
 		prod = products;
 		System.out.println("ici"+prod);
+		
+	}
+	
+	public void readerShop(int taille){
+		ArrayList<Product> shoptmp = new ArrayList<Product>();
+		for (int i = 0; i<taille;i++){
+			
+			int category1 = readInt();
+			Category category = null;
+			switch(category1){
+			case 0:
+				category = Category.WEAPON;
+				break;
+			case 1:
+				category = Category.AMMO;
+				break;
+			case 2:
+				category = Category.FOOD;
+				break;
+			}
+			String nameP = readString();
+			String imageTMP = readString();
+			String imageP = "./res/"+imageTMP+".png";
+			int duration = readInt();
+			long timeP = readLong();
+			boolean stackable = readBoolean();
+			int countP = readInt();
+			Product p = new Product(category,nameP,imageP,duration,stackable,countP,timeP);
+			//System.out.println(p.getCategory()+p.getName()+p.getImage()+p.getDuration());
+			//System.out.println(products.add(p));
+			shop.add(p);
+			
+			
+			System.out.println(shoptmp);
+		}
+		shop = shoptmp;
+		//System.out.println("ici"+shop);
 		
 	}
 	

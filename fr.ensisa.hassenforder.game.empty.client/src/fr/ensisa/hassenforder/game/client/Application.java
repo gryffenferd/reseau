@@ -118,7 +118,7 @@ public class Application {
     	return network.getProducts();
     }
 
-    public Collection<Product> doGetShop () {
+    public Collection<Product> doGetShop () throws IOException {
     	passThrough ("doGetShop");
     	return network.getShop();
     }
