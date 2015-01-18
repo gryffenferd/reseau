@@ -46,8 +46,9 @@ public class Writer extends BasicAbstractWriter implements Protocol {
 		writeBytes(content);
 	}
 
-	public void productD(){
+	public void productD(int size){
 		writeInt(PRODUCT);
+		writeInt(size);
 	}
 	
 	public void product(int category, String name, String image, int duration, long time, boolean stackable, int count){

@@ -85,12 +85,14 @@ public class SessionServer implements Protocol {
 			case PRODUCT:
 				Collection<Product> p;
 				p=document.getProducts(reader.getUserPassword(), reader.getUserId());
-				writer.productD();
+				int i=p.size();
+				writer.productD(i);				
 				Iterator<Product> itp = p.iterator() ;
 				 while (itp.hasNext()) {
 				    Product prod = itp.next();
 				    writer.product(prod.getCategory().ordinal(), prod.getName(), prod.getImage(), prod.getDuration(), prod.getTime(), prod.isStackable(), prod.getCount());
-				 }	   			
+				    System.out.println(prod.getCategory().ordinal()+","+prod.getName()+"," +prod.getImage()+","+ prod.getDuration()+","+ prod.getTime()+","+ prod.isStackable()+","+ prod.getCount());
+				 }	   	
 			break;				
 			
 			case CLEAR:
@@ -115,6 +117,7 @@ public class SessionServer implements Protocol {
 				 while (its.hasNext()) {
 				    Product prod = its.next();
 				    writer.shop(prod.getCategory().ordinal(), prod.getName(), prod.getImage(), prod.getDuration(), prod.getTime(), prod.isStackable(), prod.getCount());
+				   
 				 }	
 			break;
 			
@@ -124,11 +127,11 @@ public class SessionServer implements Protocol {
 				else
 					writer.ko();
 			break;
+			
 			case -1:
 				break;
 			default:
 				return false; // connection jammed
-
 			}
 			writer.send();			
 			return true;
