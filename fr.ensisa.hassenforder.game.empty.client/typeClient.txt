@@ -1,7 +1,0 @@
-Writer:
-
-1.connect -> String username, String userpassword
-
-3.disconnect -> String username, long id
-
-5.getStatistics

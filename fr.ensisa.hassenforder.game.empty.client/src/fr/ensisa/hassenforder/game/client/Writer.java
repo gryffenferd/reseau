@@ -20,7 +20,6 @@ public class Writer extends BasicAbstractWriter implements Protocol {
 	public void writerConnect (String username, String userpassword){
 		writeInt(CONNECTION);
 		writeString(username);
-//		this.username = username;
 		writeString(userpassword);
 	}
 	

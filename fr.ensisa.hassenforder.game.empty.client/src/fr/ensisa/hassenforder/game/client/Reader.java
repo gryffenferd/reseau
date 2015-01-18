@@ -35,32 +35,25 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	public void receive() {
 		type = readInt ();
 		switch (type) {
-		case 0:						//Si 0, risque de valoir la valeur d'une var non initialisée
+		case 0:
 			break;
-		case CONNECTION: 					//connect si marche (réponse du serveur = ok)
+		case CONNECTION:
 			readerConnect();
-			//System.out.println("connection");
 			break;
 		case CONNECTION_FAILED:
-			readerConnectFailed();	//connect si ne marche pas (réponse du serveur = ko)
-			//System.out.println("failed connexion");
+			readerConnectFailed();
 			break;
-		case DISCONNECTION:						//disconnect ok
-			//System.out.println("deconnexion");
+		case DISCONNECTION:	
 			readerDisconnect();
 			break;
 		case FAILED:
-			readerDisconnect();		//disconnect ko
-			//System.out.println("KO");
+			readerDisconnect();
 			break;
-		case STATISTICS_OK:			//Cas où getStatistics est ok
+		case STATISTICS_OK:	
 			readerStatistics();
-			//System.out.println("stats");
-			//System.out.println("type stats"+type);
 			break;
 		case ADD:
 			readerAdd();
-			//System.out.println("add");
 			break;
 		case PRODUCT:
 			readerProducts();
@@ -91,20 +84,17 @@ public class Reader extends BasicAbstractReader implements Protocol {
 	public void readerConnect(){
 		connected = readBoolean();
 		userID = readLong();
-		//System.out.println("OK");
 	}
 	
 	public void readerConnectFailed(){
 		connected = readBoolean();
-		//System.out.println("KO");
 	}
 	
 	public void readerDisconnect(){
 		connected = readBoolean();
-		//
 	}
 	
-	public boolean getConnectedState(){	//can't set: you shall not pass.
+	public boolean getConnectedState(){
 		return this.connected;
 	}
 	
@@ -112,7 +102,7 @@ public class Reader extends BasicAbstractReader implements Protocol {
 		add = readBoolean();
 	}
 	
-	public void readerStatistics(){	//Take cash + image
+	public void readerStatistics(){
 		cash = readInt();
 		length = readLong();
 		filename = readString();
@@ -191,14 +181,9 @@ public class Reader extends BasicAbstractReader implements Protocol {
 			boolean stackable = readBoolean();
 			int countP = readInt();
 			Product p = new Product(category,nameP,imageP,duration,stackable,countP,timeP);
-			System.out.println(p.getCategory()+p.getName()+p.getImage()+p.getDuration());
 			shoptmp.add(p);
-			
-			
-			System.out.println(shoptmp);
 		}
 		shop = shoptmp;
-		//System.out.println("ici"+shop);
 	}
 	
 	public void readerClear(){
